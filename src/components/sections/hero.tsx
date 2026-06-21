@@ -78,16 +78,33 @@ const Hero = () => {
           />
         </m.div>
         <div className="absolute px-2 md:px-0 top-30 lg:top-36.5 inset-x-0 custom-container flex flex-col gap-5 lg:gap-0 lg:flex-row justify-between z-30 text-white">
-          <m.div animate={{}}>
-            <h1 className="text-[32px] md:text-[44px] lg:text-[56px] text-neutral-25 font-extrabold max-w-82.5 md:max-w-144 leading-tight">
-              Hey There, <br />
+          <div className="text-[32px] md:text-[44px] lg:text-[56px] text-neutral-25 font-extrabold max-w-82.5 md:max-w-144 leading-tight">
+            <m.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1 }}
+            >
+              Hey There,
+            </m.div>
+
+            <m.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.2 }}
+              className="text-neutral-25 "
+            >
               I&apos;m Edwin Andersen
-            </h1>
-          </m.div>
-          <p className="text-sm lg:text-lg text-[#D5D7DA ] font-normal max-w-90.25 lg:max-w-109 justify-center text-left lg:text-right my-auto">
+            </m.div>
+          </div>
+          <m.p
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.6 }}
+            className="text-sm lg:text-lg text-[#D5D7DA ] font-normal max-w-90.25 lg:max-w-109 justify-center text-left lg:text-right my-auto"
+          >
             Front-End Developer with a passion for clean code and intuitive
             design. Tuning ideas into functional beauty
-          </p>
+          </m.p>
         </div>
         {/* Sosmed blok */}
         <div className="absolute top-170 lg:top-204 inset-x-0  custom-container z-30 flex justify-between">
@@ -119,7 +136,7 @@ const Hero = () => {
                       duration-300 
                       opacity-100 
                       group-hover:opacity-0 
-                      w-6 lg:w-9 h-6 lg:h-9 lg:hover:h-12 lg:hover:w-12
+                      w-6 lg:w-9 h-auto  lg:hover:w-12
                       
                       `}
                   />
@@ -136,8 +153,8 @@ const Hero = () => {
                       opacity-0
                       group-hover:opacity-100
                       group-hover:w-6 group-hover:lg:w-9 
-                      group-hover:h-6 group-hover:lg:h-9 
-                      group-hover:lg:hover:h-12 group-hover:lg:hover:w-12
+                       
+                       group-hover:lg:hover:w-12
                       
                       `}
                   />

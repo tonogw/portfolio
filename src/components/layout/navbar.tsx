@@ -40,7 +40,7 @@ const Navbar = () => {
           priority
           width={120}
           height={40}
-          className="max-w-35.25 max-h-11 stroke-black"
+          className="max-w-35.25 max-h-11 h-auto stroke-black"
         />
 
         {/* nav */}

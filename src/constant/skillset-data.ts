@@ -7,6 +7,7 @@ import IconReact from "../../public/icons/icon-skillset-reactjs.svg";
 import IconTs from "../../public/icons/icon-skillset-typscript.svg";
 
 type SkillsetItem = {
+  id: number;
   title: string;
 
   src: string;
@@ -17,6 +18,7 @@ type SkillsetItem = {
 
 export const skillsetItemData: SkillsetItem[] = [
   {
+    id: 1,
     title: "HTML",
     src: IconRing,
     label: "90%",
@@ -24,6 +26,7 @@ export const skillsetItemData: SkillsetItem[] = [
     desc: "Building the structure of web pages with semantic markup for accessibility",
   },
   {
+    id: 2,
     title: "Mongo DB",
     src: IconRing,
     label: "90%",
@@ -31,6 +34,7 @@ export const skillsetItemData: SkillsetItem[] = [
     desc: "Building the structure of web pages with semantic markup for accessibility",
   },
   {
+    id: 3,
     title: "Javascript",
     src: IconRing,
     label: "90%",
@@ -38,6 +42,7 @@ export const skillsetItemData: SkillsetItem[] = [
     desc: "Building the structure of web pages with semantic markup for accessibility",
   },
   {
+    id: 4,
     title: "Docker",
     src: IconRing,
     label: "90%",
@@ -45,6 +50,7 @@ export const skillsetItemData: SkillsetItem[] = [
     desc: "Building the structure of web pages with semantic markup for accessibility",
   },
   {
+    id: 5,
     title: "React JS",
     src: IconRing,
     label: "90%",
@@ -52,6 +58,7 @@ export const skillsetItemData: SkillsetItem[] = [
     desc: "Building the structure of web pages with semantic markup for accessibility",
   },
   {
+    id: 6,
     title: "Typescript",
     src: IconRing,
     label: "90%",
