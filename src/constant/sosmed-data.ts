@@ -1,5 +1,6 @@
 export type SosmedIconProps = {
   src: string;
+  hoverSrc: string;
   href: string;
   alt: string;
   width: number;
@@ -10,16 +11,18 @@ export type SosmedIconProps = {
 export const sosmedIcon: SosmedIconProps[] = [
   {
     src: "/icons/icon-sosmed-dribble-white.svg",
+    hoverSrc: "/icons/icon-sosmed-dribble-red.svg",
     href: "https://dribbble.com/",
     alt: "Dribble",
     width: 36,
     height: 36,
     // Color brand: bg-pink outline-dark-pink
-    hoverBg: "hover:bg-[#FFABE7] hover:text-white",
+    hoverBg: "hover:bg-[#FFABE7] ",
   },
 
   {
     src: "/icons/icon-sosmed-ig-white.svg",
+    hoverSrc: "/icons/icon-sosmed-ig-white.svg",
     href: "https://www.instagram.com/",
     alt: "Instagram",
     width: 36,
@@ -29,6 +32,7 @@ export const sosmedIcon: SosmedIconProps[] = [
   },
   {
     src: "/icons/icon-sosmed-in-white.svg",
+    hoverSrc: "/icons/icon-sosmed-in-white.svg",
     href: "https://www.linkedin.com/",
     alt: "Linkedin",
     width: 36,

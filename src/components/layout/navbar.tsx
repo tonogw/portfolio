@@ -11,7 +11,6 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
