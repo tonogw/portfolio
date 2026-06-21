@@ -7,10 +7,12 @@ import Image from "next/image";
 import {
   motion as m,
   useMotionValue,
+  useMotionValueEvent,
   useTransform,
   animate,
 } from "motion/react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Button } from "../ui/button";
 
 export default function Skillset() {
   const container = {
@@ -38,15 +40,36 @@ export default function Skillset() {
   const progress = 90;
   const strokeDashoffset = circumference - (progress / 100) * circumference;
 
+  const [started, setStarted] = useState(false);
   const count = useMotionValue(0);
+  const [display, setDisplay] = useState(0);
 
-  useEffect(() => {
-    animate(count, progress, {
-      duration: 1.5,
-    });
-  }, []);
+  useMotionValueEvent(count, "change", (latest) => {
+    setDisplay(Math.round(latest));
+  });
 
-  const rounded = useTransform(count, (value) => Math.round(value));
+  // useEffect(() => {
+  //   animate(count, 90, {
+  //     duration: 1.5,
+  //   });
+  // }, []);
+
+  // const [percent, setPercent] = useState(0);
+  // const rounded = useTransform(count, (value) => Math.round(value));
+
+  // useEffect(() => {
+  //   let start = 0;
+  //   const interval = setInterval(() => {
+  //     start += 1;
+
+  //     if (start >= 90) {
+  //       clearInterval(interval);
+  //       start = 90;
+  //     }
+  //     setPercent(start);
+  //   }, 15);
+  //   return () => clearInterval(interval);
+  // }, []);
 
   return (
     <section id="skill" className="custom-container h-237 ">
@@ -56,9 +79,12 @@ export default function Skillset() {
         transition={{ duration: 0.6, delay: 1.6 }}
         className="h-27 text-center my-15"
       >
-        <h2 className="font-extrabold text-[48px] h-27 pt-5 text-black bg-pink-200">
-          Skillset
-        </h2>
+        <div className="h-27  text-black bg-pink-200">
+          <p className="bg-white  py-0.5 px-4 border border-gray-300 rounded-full">
+            SKILL
+          </p>
+          <h2 className="font-extrabold text-[48px] pt-5">Skillset</h2>
+        </div>
       </m.div>
       <m.div
         variants={container}
@@ -72,10 +98,29 @@ export default function Skillset() {
         {skillsetItemData.map((data) => (
           <m.div
             key={data.id}
+            whileHover={{
+              y: -8,
+              scale: 1.1,
+            }}
+            onViewportEnter={() => {
+              animate(count, 90, {
+                duration: 1.5,
+              });
+            }}
             variants={item}
             transition={{ duration: 0.5 }}
+            // whileInView={{
+            //   borderColor: "#FF8A00",
+            // }}
+            animate={{
+              boxShadow: [
+                "0 0 0px #FF8A00",
+                "0 0 10px #FF8A00",
+                "0 0 5px #FF8A00",
+              ],
+            }}
             className="
-            border-2 border-black bg-gray-400 rounded-xl
+            border-2  bg-gray-400 rounded-xl 
             "
           >
             <div className="w-full flex mx-6 gap-6">
@@ -99,6 +144,7 @@ export default function Skillset() {
                     r="50"
                     stroke="#D5D7DA"
                     strokeWidth="14"
+                    strokeLinecap="round"
                     fill="none"
                   />
                   <m.circle
@@ -108,6 +154,13 @@ export default function Skillset() {
                     stroke="url(#skillGradient)"
                     strokeWidth="14"
                     strokeLinecap={"round"}
+                    // style={{
+                    //   filter: `
+                    //   drop-shadow(0 0 4px #9747FF)
+                    //   drop-shadow(0 0 8px #9747FF)
+                    //   drop-shadow(0 0 12px #1179FC)
+                    //   `,
+                    // }}
                     fill="none"
                     strokeDasharray={circumference}
                     initial={{
@@ -116,33 +169,68 @@ export default function Skillset() {
                     whileInView={{
                       strokeDashoffset,
                     }}
+                    onViewportEnter={() => {
+                      if (!started) {
+                        setStarted(true);
+                        animate(count, 90, {
+                          duration: 1.5,
+                        });
+                      }
+                    }}
                     transition={{
                       duration: 1.5,
                       ease: "easeOut",
                     }}
                   />
-
-                  {/* <Image src={data.src} alt="icon" width={120} height={120} /> */}
-                  <m.span
-                    className="
+                </svg>
+                {/* <Image src={data.src} alt="icon" width={120} height={120} /> */}
+                <span
+                  className="
                   absolute inset-0 flex items-center justify-center 
                   text-2xl font-medium
                   "
-                  >
-                    {data.label}
-                    {/* {rounded} */}
-                  </m.span>
-                </svg>
+                >
+                  {/* {data.label} */}
+                  {/* {rounded} */}
+                  {/* {percent}% */}
+                  {display}%
+                </span>
               </div>
               <div className="w-98 my-9">
-                <Image src={data.icon} alt="" />
-                <h3 className="font-extrabold">{data.title}</h3>
+                <div className="flex items-center gap-2">
+                  <m.div
+                    whileHover={{
+                      scale: 1.5,
+                    }}
+                  >
+                    <Image src={data.icon} alt="tech icon" />
+                  </m.div>
+                  <h3 className="font-extrabold ">{data.title}</h3>
+                </div>
                 <p>{data.desc}</p>
               </div>
             </div>
           </m.div>
         ))}
       </m.div>
+      <div className="flex items-center justify-center my-8">
+        <Button variant="link">
+          <Image
+            src="/icons/button-prev-left.svg"
+            alt="button next"
+            width={64}
+            height={64}
+            className="bg-amber-100 rounded-full my-8"
+          />
+          <Image
+            src="/icons/button-next-right.svg"
+            alt="button next"
+            width={64}
+            height={64}
+            className="bg-amber-100 rounded-full"
+          />
+        </Button>
+      </div>
     </section>
   );
 }

@@ -7,6 +7,15 @@ import { sosmedIcon } from "@/constant/sosmed-data";
 import { Button } from "../ui/button";
 
 const Hero = () => {
+  const nodes = [
+    { top: "62%", left: "25%" },
+    { top: "70%", left: "40%" },
+    { top: "58%", left: "55%" },
+    { top: "75%", left: "68%" },
+  ];
+
+  const words = ["I'm", "Edwin", "Anderson"];
+
   return (
     <section id="hero" className="relative h-209.5 lg:h-256 overflow-hidden">
       {/* Background */}
@@ -29,7 +38,27 @@ const Hero = () => {
           // loading="eager"
           className="object-cover object-center z-0"
         />
-
+        {nodes.map((node, index) => (
+          <m.div
+            key={index}
+            className="
+          absolute w-2 h-2 rounded-full bg-white z-20 shadow-[0_0_10px_#fff]
+          "
+            style={{
+              top: node.top,
+              left: node.left,
+            }}
+            animate={{
+              opacity: [0.3, 1, 0.3],
+              scale: [1, 1.8, 1],
+            }}
+            transition={{
+              duration: 2,
+              delay: index * 0.5,
+              repeat: Infinity,
+            }}
+          />
+        ))}
         <Image
           src="/images/hero-line-white.png"
           alt="matrix line"
@@ -40,18 +69,20 @@ const Hero = () => {
           className="absolute top-100 lg:top-39.75 min-w-150 lg:w-360 h-auto left-1/2 -translate-x-1/2 z-10"
         />
         <m.div
-          initial={{
-            opacity: 0,
-            x: -300,
-          }}
+          // initial={{
+          //   opacity: 0,
+          //   x: -300,
+          // }}
           animate={{
-            opacity: 1,
-            x: 0,
+            y: [0, -4, 0],
+            // opacity: 1,
+            // x: 0,
           }}
           transition={{
-            duration: 1.2,
-            ease: "easeOut",
-            delay: 0.8,
+            duration: 4, //1.2
+            repeat: Infinity,
+            // ease: "easeOut",
+            // delay: 0.8,
           }}
           className="
           absolute
@@ -88,13 +119,45 @@ const Hero = () => {
             </m.div>
 
             <m.div
+              className="flex gap-4"
+              variants={{
+                hidden: {},
+                show: {
+                  transition: {
+                    staggerChildren: 0.2,
+                  },
+                },
+              }}
+              initial="hidden"
+              animate="show"
+            >
+              {words.map((word) => (
+                <m.span
+                  key={word}
+                  variants={{
+                    hidden: {
+                      opacity: 0,
+                      y: 20,
+                    },
+                    show: {
+                      opacity: 1,
+                      y: 0,
+                    },
+                  }}
+                >
+                  {word}
+                </m.span>
+              ))}
+            </m.div>
+            {/* <m.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.2 }}
               className="text-neutral-25 "
+
             >
               I&apos;m Edwin Andersen
-            </m.div>
+            </m.div> */}
           </div>
           <m.p
             initial={{ opacity: 0, y: 15 }}
@@ -115,14 +178,16 @@ const Hero = () => {
                 key={icon.alt}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`${icon.hoverBg} group relative
+                className={`
+                   ${icon.hoverBg} 
+                  group relative
                   w-12 lg:w-15 h-12 lg:h-15  flex items-center justify-center
                   rounded-full backdrop-blur-2xl bg-[#0A0D1280] shadow-2xl 
                   transition-all duration-500 
                   
                   `}
               >
-                <m.div whileHover={{ scale: 1.2 }}>
+                <m.div whileHover={{ scale: 1.01 }}>
                   <Image
                     src={icon.src}
                     alt={icon.alt}
@@ -147,7 +212,7 @@ const Hero = () => {
                     height={icon.height}
                     priority
                     className={`
-                      ${icon.hoverBg}
+                   
                       transition-opacity
                       duration-300 
                       opacity-0
@@ -162,7 +227,7 @@ const Hero = () => {
               </Link>
             ))}
           </div>
-          <m.div whileHover={{ scale: 2 }}>
+          <m.div whileHover={{ scale: 1.1 }}>
             <Button className="gap-2 py-1.5 px-2.75 lg:px-4 h-10 rounded-full bg-[#0A0D1280] ">
               <span className="hidden lg:inline">Scroll Down</span>
 
