@@ -8,10 +8,9 @@ import {
   motion as m,
   useMotionValue,
   useMotionValueEvent,
-  useTransform,
   animate,
 } from "motion/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button } from "../ui/button";
 
 export default function Skillset() {
@@ -99,8 +98,8 @@ export default function Skillset() {
           <m.div
             key={data.id}
             whileHover={{
-              y: -8,
-              scale: 1.1,
+              y: -2,
+              scale: 1.01,
             }}
             onViewportEnter={() => {
               animate(count, 90, {
@@ -199,9 +198,15 @@ export default function Skillset() {
               <div className="w-98 my-9">
                 <div className="flex items-center gap-2">
                   <m.div
-                    whileHover={{
-                      scale: 1.5,
-                    }}
+                    // whileHover={{
+                    //   scale: 1.5,
+                    // }}
+                    animate={data.motion.animate}
+                    transition={data.motion.transition}
+                    // transition={{
+                    //   duration: 3,
+                    //   repeat: Infinity,
+                    // }}
                   >
                     <Image src={data.icon} alt="tech icon" />
                   </m.div>

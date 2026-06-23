@@ -4,6 +4,8 @@ import { navigationData } from "@/constant/navigation-data";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { useTheme } from "next-themes";
+import { motion as m } from "motion/react";
 
 import {
   Sheet,
@@ -13,6 +15,8 @@ import {
 } from "@/components/ui/sheet";
 
 const Navbar = () => {
+  const { theme, setTheme } = useTheme();
+
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -56,23 +60,48 @@ const Navbar = () => {
           </ul>
         </nav>
 
-        {/* button */}
-        <Button
-          asChild
-          variant="default"
-          className="hidden lg:flex px-12 gap-2 rounded-full h-12 bg-linear-50 from-[#9747FF] to-[#1179FC]"
+        {/* <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
         >
-          <Link href="/contact" className="font-medium">
-            <Image
-              src="/icons/icon-mail-white.svg"
-              alt="mail icon"
-              width={24}
-              height={24}
-              className="w-auto h-auto"
-            />
-            Hire Me
-          </Link>
-        </Button>
+          <Image
+            src={
+              theme === "dark" ? "/icons/icon-sun.svg" : "/icons/icon-moon.svg"
+            }
+            alt="theme toggle"
+            width={24}
+            height={24}
+            className="dark:stroke-white"
+          />
+        </Button> */}
+
+        <m.div
+          whileHover={{
+            scale: 1.1,
+          }}
+          whileTap={{
+            scale: 0.98,
+          }}
+        >
+          {/* button */}
+          <Button
+            asChild
+            variant="default"
+            className="hidden lg:flex px-12 gap-2 rounded-full h-12 bg-linear-50 from-[#9747FF] to-[#1179FC] hover:shadow-2xl"
+          >
+            <Link href="/contact" className="font-medium">
+              <Image
+                src="/icons/icon-mail-white.svg"
+                alt="mail icon"
+                width={24}
+                height={24}
+                className="w-auto h-auto"
+              />
+              Hire Me
+            </Link>
+          </Button>
+        </m.div>
 
         {/* sheet button */}
         <Sheet>

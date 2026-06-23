@@ -2,6 +2,7 @@
 
 import Hero from "@/components/sections/hero";
 import Navbar from "@/components/layout/navbar";
+import About from "@/components/sections/about";
 import Skillset from "@/components/sections/skillset";
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
     <>
       <Hero />
       <Navbar />
+      <About />
       <Skillset />
     </>
   );

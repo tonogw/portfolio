@@ -36,7 +36,9 @@ const Hero = () => {
           // width={1440}
           // height={1024}
           // loading="eager"
-          className="object-cover object-center z-0"
+          className="
+
+          object-cover object-center z-0"
         />
         {nodes.map((node, index) => (
           <m.div
@@ -53,12 +55,27 @@ const Hero = () => {
               scale: [1, 1.8, 1],
             }}
             transition={{
-              duration: 2,
+              duration: 1.5,
               delay: index * 0.5,
               repeat: Infinity,
+              repeatType: "mirror",
             }}
           />
         ))}
+        {/* <m.div
+          className="
+          absolute top-100 lg:top-39.75
+        left-1/2 -translate-x-1/2 z-10
+        "
+          animate={{
+            opacity: [0.8, 1, 0.8],
+            filter: ["brightness(1)", "brightness(1.3)", "brightness(1)"],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+          }}
+        > */}
         <Image
           src="/images/hero-line-white.png"
           alt="matrix line"
@@ -66,25 +83,41 @@ const Hero = () => {
           height={826}
           priority
           // className="object-contain object-bottom bottom-0 z-10"
-          className="absolute top-100 lg:top-39.75 min-w-150 lg:w-360 h-auto left-1/2 -translate-x-1/2 z-10"
+          className="
+            absolute top-100 lg:top-39.75
+            left-1/2 -translate-x-1/2 z-10
+            min-w-150 lg:w-360
+
+            "
         />
+        {/* </m.div> */}
         <m.div
-          // initial={{
-          //   opacity: 0,
-          //   x: -300,
+          initial={{
+            opacity: 0,
+            x: -300,
+          }}
+          // transition={{
+          //   duration: 1.2,
+          //   ease: "easeOut",
+          //   delay: 0.8,
           // }}
           animate={{
-            y: [0, -4, 0],
-            // opacity: 1,
-            // x: 0,
+            // y: [0, -4, 0],
+            opacity: 1,
+            x: 0,
           }}
-          transition={{
-            duration: 4, //1.2
-            repeat: Infinity,
-            // ease: "easeOut",
-            // delay: 0.8,
-          }}
-          className="
+        >
+          <m.div
+            animate={{
+              y: [0, -4, 0],
+            }}
+            transition={{
+              duration: 4, //1.2
+              repeat: Infinity,
+              // ease: "easeOut",
+              // delay: 0.8,
+            }}
+            className="
           absolute
           top-85
           lg:top-94
@@ -94,26 +127,27 @@ const Hero = () => {
           overflow-x-hidden
           w-110 lg:w-188.5 h-auto
           "
-        >
-          <Image
-            src="/images/potret-hero-backdrop.png"
-            alt="potrait of man"
-            width={754}
-            height={681}
-            priority
-            className="
+          >
+            <Image
+              src="/images/potret-hero-backdrop.png"
+              alt="potrait of man"
+              width={754}
+              height={681}
+              priority
+              className="
          
             w-150 lg:w-188.5 h-auto 
             overflow-x-hidden
             "
-          />
+            />
+          </m.div>
         </m.div>
         <div className="absolute px-2 md:px-0 top-30 lg:top-36.5 inset-x-0 custom-container flex flex-col gap-5 lg:gap-0 lg:flex-row justify-between z-30 text-white">
           <div className="text-[32px] md:text-[44px] lg:text-[56px] text-neutral-25 font-extrabold max-w-82.5 md:max-w-144 leading-tight">
             <m.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1 }}
+              transition={{ duration: 0.8 }}
             >
               Hey There,
             </m.div>
@@ -130,6 +164,9 @@ const Hero = () => {
               }}
               initial="hidden"
               animate="show"
+              transition={{
+                delay: 1.5,
+              }}
             >
               {words.map((word) => (
                 <m.span
@@ -162,7 +199,7 @@ const Hero = () => {
           <m.p
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.6 }}
+            transition={{ duration: 0.6, delay: 1 }}
             className="text-sm lg:text-lg text-[#D5D7DA ] font-normal max-w-90.25 lg:max-w-109 justify-center text-left lg:text-right my-auto"
           >
             Front-End Developer with a passion for clean code and intuitive
@@ -187,7 +224,11 @@ const Hero = () => {
                   
                   `}
               >
-                <m.div whileHover={{ scale: 1.01 }}>
+                <m.div
+                  animate={icon.motion.animate}
+                  transition={icon.motion.transition}
+                  whileHover={{ scale: 1.01 }}
+                >
                   <Image
                     src={icon.src}
                     alt={icon.alt}
@@ -229,7 +270,9 @@ const Hero = () => {
           </div>
           <m.div whileHover={{ scale: 1.1 }}>
             <Button className="gap-2 py-1.5 px-2.75 lg:px-4 h-10 rounded-full bg-[#0A0D1280] ">
-              <span className="hidden lg:inline">Scroll Down</span>
+              <a href="#skill" className="hidden lg:inline">
+                Scroll Down
+              </a>
 
               <Image
                 src="/icons/icon-scrolldown-white.svg"
