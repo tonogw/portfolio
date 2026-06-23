@@ -2,9 +2,9 @@ import Image from "next/image";
 
 export default function About() {
   return (
-    <section id="about" className="object-center">
+    <section id="about" className="relative w-full">
       <div
-        className=" -top-20 z-10
+        className="absolute  -top-15 left-1/2 -translate-x-1/2 z-10 w-full max-w-360
       "
       >
         <Image

@@ -77,7 +77,7 @@ const Hero = () => {
           }}
         > */}
         <Image
-          src="/images/hero-line-white.png"
+          src="/images/hero-line.svg"
           alt="matrix line"
           width={1440}
           height={826}
