@@ -3,11 +3,11 @@ import { standOut } from "@/constant/standout-data";
 import {
   motion as m,
   Variants,
-  useMotionValue,
-  useMotionValueEvent,
-  animate,
+  // useMotionValue,
+  // useMotionValueEvent,
+  // animate,
 } from "motion/react";
-import { useState } from "react";
+// import { useState } from "react";
 
 export default function StandOut() {
   const containerVariants = {
@@ -90,7 +90,7 @@ export default function StandOut() {
   return (
     <section
       id="standout"
-      className="mx-auto max-w-360 bg-linear-to-t from-[#F3EBFF] to-[#fdfdfd] py-20 text-black overflow-hidden"
+      className="mx-auto max-w-360 bg-linear-to-t from-[#F3EBFF] to-neutral-25 py-20 text-black overflow-hidden"
     >
       {/* Container pembatas aplikasi */}
       <div className="custom-container flex flex-col gap-12">
