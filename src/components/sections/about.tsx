@@ -97,8 +97,8 @@ export default function About() {
                         {/* Layer 2: File Purple (Tengah) */}
                         <m.div
                           animate={{
-                            y: [0, -28, 0],
-                            x: [0, -10, 0],
+                            y: [0, -32, 0],
+                            x: [0, -5, 0],
                             rotate: [0, -6, 0],
                           }}
                           transition={{
