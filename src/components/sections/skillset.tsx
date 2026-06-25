@@ -71,19 +71,19 @@ export default function Skillset() {
   // }, []);
 
   return (
-    <section id="skill" className="max-w-360 mx-auto py-20 bg-[#FFFFFF]">
+    <section id="skill" className="max-w-360 mx-auto pt-20 bg-[#FFFFFF]">
       <div className="custom-container bg-blue-200">
         <m.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.6 }}
-          className="text-center mb-20 "
+          className="text-center"
         >
-          <div className=" h-27  text-black bg-pink-200">
-            <p className="bg-white  py-0.5 px-4 border border-gray-300 rounded-full">
+          <div className="h-27 text-black bg-pink-200">
+            <p className="absolute left-1/2 -translate-x-1/2 bg-white py-0.5 px-4 border border-gray-300 rounded-full">
               SKILL
             </p>
-            <h2 className="font-extrabold text-[48px] pt-5">Skillset</h2>
+            <h2 className="font-bold items-center text-5xl pt-5">Skillset</h2>
           </div>
         </m.div>
         <m.div
