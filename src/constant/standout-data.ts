@@ -1,8 +1,16 @@
+import { StaticImageData } from "next/image";
+import myAvatar from "../../public/images/image-standout-avatar.png";
+import othAvatar from "../../public/images/image-standout-avatar2.png";
+import chkWhite from "../../public/icons/icon-standout-check-white.svg";
+import chkBlck from "../../public/icons/icon-standout-check-black.svg";
+import crossRed from "../../public/icons/icon-standout-x.svg";
+
 type StandOut = {
   id: number;
   label: string;
+  avatar: StaticImageData;
+  icon: StaticImageData;
   data: {
-    icon: string;
     desc: string;
   }[];
 };
@@ -11,33 +19,28 @@ export const standOut: StandOut[] = [
   {
     id: 1,
     label: "With Me",
+    avatar: myAvatar,
+    icon: chkWhite, // isDark ? chkWhite : chkBlack
     data: [
       {
-        icon: "v",
         desc: "React Expert",
       },
       {
-        icon: "v",
         desc: "Precise Website Implementation",
       },
       {
-        icon: "v",
         desc: "TypeScript Proficiency",
       },
       {
-        icon: "v",
         desc: "Clean, Maintainable Code",
       },
       {
-        icon: "v",
         desc: "Responsible Website Development",
       },
       {
-        icon: "v",
         desc: "Performance Optimization",
       },
       {
-        icon: "v",
         desc: "UI Design Proficiency (Figma)",
       },
     ],
@@ -46,34 +49,28 @@ export const standOut: StandOut[] = [
   {
     id: 2,
     label: "Another Talent",
-
+    avatar: othAvatar,
+    icon: crossRed,
     data: [
       {
-        icon: "x",
         desc: "Basic React Knowledge",
       },
       {
-        icon: "x",
         desc: "Inconsistent Design Translation",
       },
       {
-        icon: "x",
         desc: "Little to No TypeScript Knowledge",
       },
       {
-        icon: "x",
         desc: "Unstructural Code",
       },
       {
-        icon: "x",
         desc: "Inconsistent Responsiveness",
       },
       {
-        icon: "x",
         desc: "Slow and Heavy Websites",
       },
       {
-        icon: "x",
         desc: "No Design Skills",
       },
     ],
