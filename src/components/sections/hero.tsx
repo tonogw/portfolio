@@ -279,6 +279,7 @@ const Hero = () => {
                 alt="arrow down"
                 width={16}
                 height={16}
+                className="hover:animate-bounce"
               />
             </Button>
           </m.div>

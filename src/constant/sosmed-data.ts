@@ -35,7 +35,7 @@ export const sosmedIcon: SosmedIconProps[] = [
     width: 36,
     height: 36,
     // Color brand: bg-pink outline-dark-pink
-    hoverBg: "hover:bg-[#FFABE7] ",
+    hoverBg: "hover:bg-[#FFABE7] hover:animate-bounce ",
   },
 
   {

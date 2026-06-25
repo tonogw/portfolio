@@ -134,6 +134,9 @@ export default function StandOut() {
                 custom={isWithMe} // Mengirim status ke variants untuk kalkulasi delay & posisi
                 // variants={cardVariants}
                 variants={cardVariants}
+                // initial="hidden"
+                // whileInView="visible"
+                // viewport={{ amount: 0.2 }}
                 // onViewportEnter={() => {
                 //   animate(count, 90, {
                 //     duration: 1.5,
