@@ -71,13 +71,13 @@ export default function Skillset() {
   // }, []);
 
   return (
-    <section id="skill" className="max-w-360 mx-auto bg-red-200">
-      <div className="min-h-237 custom-container bg-blue-200">
+    <section id="skill" className="max-w-360 mx-auto py-20 bg-[#FFFFFF]">
+      <div className="custom-container bg-blue-200">
         <m.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.6 }}
-          className=" h-27 text-center my-15 "
+          className="text-center mb-20 "
         >
           <div className=" h-27  text-black bg-pink-200">
             <p className="bg-white  py-0.5 px-4 border border-gray-300 rounded-full">
@@ -91,8 +91,8 @@ export default function Skillset() {
           initial="hidden"
           animate="show"
           className="
-        gap-5 h-158
-        grid grid-cols-1 md:grid-cols-2 w-full  my-5 text-left
+        gap-5
+        grid grid-cols-1 md:grid-cols-2 w-full text-left
         "
         >
           {skillsetItemData.map((data) => (

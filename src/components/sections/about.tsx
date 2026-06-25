@@ -6,12 +6,12 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative w-full min-h-162.5 lg:min-h-187.5 bg-neutral-950 pb-20"
+      className="relative w-full min-h-162.5 lg:min-h-137 bg-neutral-950"
     >
       {/* Wrapper Utama Latar Belakang (Max 1440px mengikuti aset figma) */}
       <div className="absolute -top-16 left-1/2 -translate-x-1/2 z-10 w-full max-w-360">
         {/* === BLOK PUTIH UTAMA (Lebar Penuh 1440px) === */}
-        <div className="absolute top-25 left-1/2 -translate-x-1/2 w-full bg-white pt-8 pb-16 lg:py-14 rounded-3xl z-50 text-black shadow-2xl">
+        <div className="absolute top-25 left-1/2 -translate-x-1/2 w-full bg-white pt-8  lg:py-14  z-50 text-black">
           {/* === CUSTOM CONTAINER (Membatasi isi 1184px rata kanan-kiri segaris Navbar & Footer) === */}
           <div className="custom-container flex flex-col lg:flex-row items-start justify-between gap-8">
             {/* === Left Blok: Menu List Box Ungu === */}
