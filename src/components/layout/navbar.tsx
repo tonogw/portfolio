@@ -20,7 +20,7 @@ const Navbar = () => {
   useEffect(() => {
     // 1. Deteksi scroll sederhana untuk efek blur background navbar
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 0);
     };
     window.addEventListener("scroll", handleScroll);
 
@@ -76,11 +76,11 @@ const Navbar = () => {
   return (
     <header
       className={`
-      fixed px-4 top-0 z-50 w-full transition-all duration-300 ease-in-out h-16 md:h-21.5 flex items-center
+      fixed top-0 z-50 w-full transition-all duration-300 ease-in-out h-16 md:h-21.5 flex items-center
       ${textColorClass} ${navbarBgClass}
       `}
     >
-      <div className="flex-between custom-container w-full">
+      <div className="flex justify-between custom-container w-full">
         {/* Image logo - Otomatis berganti aset putih / hitam tergantung background section */}
         <Image
           src={
@@ -116,7 +116,7 @@ const Navbar = () => {
           <Button
             asChild
             variant="default"
-            className="hidden lg:flex px-12 gap-2 rounded-full h-12 bg-linear-50 from-[#9747FF] to-[#1179FC] hover:shadow-2xl text-white border-0"
+            className="hidden lg:flex px-4 lg:px-12 gap-2 rounded-full h-12 bg-linear-50 from-[#9747FF] to-[#1179FC] hover:shadow-2xl text-white border-0"
           >
             <Link href="/contact" className="font-medium">
               <Image

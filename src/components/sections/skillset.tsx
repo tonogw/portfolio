@@ -71,7 +71,10 @@ export default function Skillset() {
   // }, []);
 
   return (
-    <section id="skill" className="max-w-360 mx-auto pt-20 bg-[#FFFFFF]">
+    <section
+      id="skill"
+      className="max-w-360 mx-auto pt-80 lg:pt-20 bg-[#FFFFFF]"
+    >
       <div className="custom-container bg-blue-200">
         <m.div
           initial={{ opacity: 0, y: 15 }}
@@ -79,7 +82,7 @@ export default function Skillset() {
           transition={{ duration: 0.6, delay: 1.6 }}
           className="text-center"
         >
-          <div className="h-27 text-black bg-pink-200">
+          <div className="h-27 gap-6 text-black bg-pink-200">
             <p className="absolute left-1/2 -translate-x-1/2 bg-white py-0.5 px-4 border border-gray-300 rounded-full">
               SKILL
             </p>
@@ -123,9 +126,14 @@ export default function Skillset() {
             border-2  bg-gray-400 rounded-xl 
             "
             >
-              <div className="w-full flex mx-6 gap-6">
-                <div className="relative w-30 h-30 my-6">
-                  <svg width="120" height="120" viewBox="0 0 120 120">
+              <div className="flex mx-4 lg:mx-6 gap-6">
+                <div className="relative w-24.5 h-24.5 lg:w-30 lg:h-30 my-6">
+                  <svg
+                    width="120"
+                    height="120"
+                    viewBox="0 0 120 120"
+                    className="w-full h-full"
+                  >
                     <defs>
                       <linearGradient
                         id="skillGradient"
@@ -152,7 +160,7 @@ export default function Skillset() {
                       cy="60"
                       r="50"
                       stroke="url(#skillGradient)"
-                      strokeWidth="14"
+                      strokeWidth="14 "
                       strokeLinecap={"round"}
                       // style={{
                       //   filter: `
@@ -187,7 +195,7 @@ export default function Skillset() {
                   <span
                     className="
                   absolute inset-0 flex items-center justify-center 
-                  text-2xl font-medium
+                  text-lg lg:text-2xl font-medium
                   "
                   >
                     {/* {data.label} */}
@@ -213,7 +221,7 @@ export default function Skillset() {
                     </m.div>
                     <h3 className="font-extrabold ">{data.title}</h3>
                   </div>
-                  <p>{data.desc}</p>
+                  <p className="text-sm lg:text-base">{data.desc}</p>
                 </div>
               </div>
             </m.div>

@@ -207,7 +207,7 @@ const Hero = () => {
           </m.p>
         </div>
         {/* Sosmed blok */}
-        <div className="absolute top-170 lg:top-204 inset-x-0  custom-container z-30 flex justify-between">
+        <div className="absolute top-160 lg:top-204 inset-x-0  custom-container z-30 flex justify-between">
           <div className="flex gap-4 ">
             {sosmedIcon.map((icon) => (
               <Link
@@ -218,7 +218,7 @@ const Hero = () => {
                 className={`
                    ${icon.hoverBg} 
                   group relative
-                  w-12 lg:w-15 h-12 lg:h-15  flex items-center justify-center
+                  w-12 h-12 lg:w-15 lg:h-15  flex items-center justify-center
                   rounded-full backdrop-blur-2xl bg-[#0A0D1280] shadow-2xl 
                   transition-all duration-500 
                   

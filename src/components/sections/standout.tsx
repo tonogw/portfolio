@@ -105,10 +105,10 @@ export default function StandOut() {
           //   transition={{ duration: 0.6, delay: 1.6 }}
           className="flex flex-col gap-2 justify-center text-center items-center"
         >
-          <span className="px-4 py-1.5 bg-[#F9F5FF] border border-purple-100 rounded-full text-xs font-regular w-fit text-black shadow-sm">
+          <span className="px-4 py-1.5 bg-[#F9F5FF] border border-purple-100 rounded-full text-xs lg:text-sm font-regular w-fit text-black shadow-sm">
             COMPARISON
           </span>
-          <h2 className="text-5xl md:text-4xl lg:text-[44px] font-black text-gray-900 tracking-tight">
+          <h2 className="text-[32px] md:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight">
             Why I Stand Out
           </h2>
         </m.div>

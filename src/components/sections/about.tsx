@@ -9,9 +9,9 @@ export default function About() {
       className="relative w-full min-h-162.5 lg:min-h-137 bg-neutral-950"
     >
       {/* Wrapper Utama Latar Belakang (Max 1440px mengikuti aset figma) */}
-      <div className="absolute -top-16 left-1/2 -translate-x-1/2 z-10 w-full max-w-360">
+      <div className="absolute -top-32 lg:-top-16 left-1/2 -translate-x-1/2 z-10 w-full max-w-360">
         {/* === BLOK PUTIH UTAMA (Lebar Penuh 1440px) === */}
-        <div className="absolute top-25 left-1/2 -translate-x-1/2 w-full bg-white pt-8  lg:py-14  z-50 text-black">
+        <div className="absolute top-10 lg:top-25 left-1/2 -translate-x-1/2 w-full bg-white pt-8  lg:py-14  z-50 text-black">
           {/* === CUSTOM CONTAINER (Membatasi isi 1184px rata kanan-kiri segaris Navbar & Footer) === */}
           <div className="custom-container flex flex-col lg:flex-row items-start justify-between gap-8">
             {/* === Left Blok: Menu List Box Ungu === */}
@@ -23,7 +23,7 @@ export default function About() {
                     className="text-black bg-white rounded-xl font-semibold flex items-center p-4 shadow-sm"
                   >
                     <div
-                      className={`w-14 h-14 ${item.bg} rounded-full flex items-center justify-center mr-4 shrink-0`}
+                      className={`w-12 h-12 lg:w-14 lg:h-14 ${item.bg} rounded-full flex items-center justify-center mr-4 shrink-0`}
                     >
                       <Image
                         src={item.icon}
@@ -47,8 +47,8 @@ export default function About() {
             </div>
 
             {/* === Right Blok: Konten Teks About === */}
-            <div className="w-full lg:max-w-178.75 flex flex-col  gap-4 text-left">
-              <span className="w-25.5 text-xs font-bold tracking-wider text-black bg-[#F3EBFF] px-3 py-1 rounded-full">
+            <div className="w-full lg:max-w-178.75 flex flex-col gap-4 text-left py-10">
+              <span className="w-25.5 text-xs font-bold tracking-wider text-black border border-[#D5D7DA]  bg-[#FFFFFF] px-0 lg:px-3 py-1 rounded-full">
                 ABOUT ME
               </span>
 
