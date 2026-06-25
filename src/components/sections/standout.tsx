@@ -90,7 +90,7 @@ export default function StandOut() {
   return (
     <section
       id="standout"
-      className="w-full bg-linear-to-t from-[#F3EBFF] to-[#fdfdfd] py-20 text-black overflow-hidden"
+      className="mx-auto max-w-360 bg-linear-to-t from-[#F3EBFF] to-[#fdfdfd] py-20 text-black overflow-hidden"
     >
       {/* Container pembatas aplikasi */}
       <div className="custom-container flex flex-col gap-12">
