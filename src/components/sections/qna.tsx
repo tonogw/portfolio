@@ -1,10 +1,16 @@
 import Image from "next/image";
 import { faqData } from "@/constant/faq-data";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export default function QnA() {
   return (
     <section
-      id="qna"
+      id="faq"
       className="relative max-w-360 h-216.5 mx-auto bg-white py-20 text-black overflow-hidden"
     >
       {/* Header Judul */}
@@ -16,6 +22,23 @@ export default function QnA() {
           Your Questions, Answered
         </h2>
       </div>
+      {faqData.map((item) => (
+        <div key={item.value}>
+          <Accordion
+            type="single"
+            collapsible
+            defaultValue="qna"
+            className="custom-container"
+          >
+            <AccordionItem value={item.value}>
+              <AccordionTrigger>
+                {item.trigger}
+                <AccordionContent>{item.content}</AccordionContent>
+              </AccordionTrigger>
+            </AccordionItem>
+          </Accordion>
+        </div>
+      ))}
     </section>
   );
 }
