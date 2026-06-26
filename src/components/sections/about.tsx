@@ -88,9 +88,10 @@ export default function About() {
                           <Image
                             src={data.projIcon[2]}
                             alt="file pink"
-                            width={45}
+                            // fill
+                            width={55}
                             height={55}
-                            className="object-contain"
+                            className="object-contain w-13.75 h-13.75"
                           />
                         </m.div>
 
@@ -112,9 +113,10 @@ export default function About() {
                           <Image
                             src={data.projIcon[3]}
                             alt="file purple"
-                            width={48}
+                            // fill
+                            width={58}
                             height={58}
-                            className="object-contain"
+                            className="object-contain w-14.5 h-14.5"
                           />
                         </m.div>
 
@@ -132,9 +134,9 @@ export default function About() {
                           <Image
                             src={data.projIcon[1]}
                             alt="file doc user"
-                            width={52}
+                            width={62}
                             height={62}
-                            className="object-contain"
+                            className="object-contain w-15.5 h-15.5"
                           />
                         </m.div>
 

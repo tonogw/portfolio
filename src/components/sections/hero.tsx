@@ -54,20 +54,7 @@ const Hero = () => {
             }}
           />
         ))}
-        {/* <m.div
-          className="
-          absolute top-100 lg:top-39.75
-        left-1/2 -translate-x-1/2 z-10
-        "
-          animate={{
-            opacity: [0.8, 1, 0.8],
-            filter: ["brightness(1)", "brightness(1.3)", "brightness(1)"],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-          }}
-        > */}
+
         <Image
           src="/images/hero-line.svg"
           alt="matrix line"
@@ -88,11 +75,6 @@ const Hero = () => {
             opacity: 0,
             x: -300,
           }}
-          // transition={{
-          //   duration: 1.2,
-          //   ease: "easeOut",
-          //   delay: 0.8,
-          // }}
           animate={{
             // y: [0, -4, 0],
             opacity: 1,
@@ -178,15 +160,6 @@ const Hero = () => {
                 </m.span>
               ))}
             </m.div>
-            {/* <m.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.2 }}
-              className="text-neutral-25 "
-
-            >
-              I&apos;m Edwin Andersen
-            </m.div> */}
           </div>
           <m.p
             initial={{ opacity: 0, y: 15 }}
@@ -224,6 +197,7 @@ const Hero = () => {
                   <Image
                     src={icon.src}
                     alt={icon.alt}
+                    // fill
                     width={icon.width}
                     height={icon.height}
                     priority
@@ -234,7 +208,7 @@ const Hero = () => {
                       duration-300 
                       opacity-100 
                       group-hover:opacity-0 
-                      w-6 lg:w-9 h-auto  lg:hover:w-12
+                      w-6 h-6 lg:w-9 lg:h-9  lg:hover:scale-110
                       
                       `}
                   />
@@ -245,12 +219,12 @@ const Hero = () => {
                     height={icon.height}
                     priority
                     className={`
-                   
-                      transition-opacity
+                      transition-all
+                      
                       duration-300 
                       opacity-0
                       group-hover:opacity-100
-                      group-hover:w-6 group-hover:lg:w-9 
+                      group-hover:w-6 h-6 group-hover:lg:w-9 lg:h-9
                        
                        group-hover:lg:hover:w-12
                       
@@ -271,7 +245,7 @@ const Hero = () => {
                 alt="arrow down"
                 width={16}
                 height={16}
-                className="hover:animate-bounce"
+                className="w-4 h-4 hover:animate-bounce"
               />
             </Button>
           </m.div>

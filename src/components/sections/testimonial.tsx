@@ -23,11 +23,12 @@ function CompanyLogo({
       <Image
         src={svgPath}
         alt={`${companyName} logo`}
-        width={133}
-        height={40}
+        fill
+        // width={133}
+        // height={40}
         priority
         /* FIX LOGO: Jika aktif/hover beri efek putih bersih (brightness-0 invert), jika tidak aktif biarkan warna asli bawaan SVG */
-        className={`object-contain object-left transition-all duration-300 ${
+        className={`object-contain object-left w-auto h-full transition-all duration-300 ${
           isActive ? "brightness-0 invert" : "brightness-100"
         }`}
       />

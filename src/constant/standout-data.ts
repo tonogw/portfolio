@@ -2,7 +2,7 @@ import { StaticImageData } from "next/image";
 import myAvatar from "../../public/images/image-standout-avatar.png";
 import othAvatar from "../../public/images/image-standout-avatar2.png";
 import chkWhite from "../../public/icons/icon-standout-check-white.svg";
-import chkBlck from "../../public/icons/icon-standout-check-black.svg";
+// import chkBlck from "../../public/icons/icon-standout-check-black.svg";
 import crossRed from "../../public/icons/icon-standout-x.svg";
 
 type StandOut = {

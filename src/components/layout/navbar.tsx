@@ -90,9 +90,10 @@ const Navbar = () => {
           }
           alt="logo"
           priority
+          // fill
           width={120}
-          height={40}
-          className="max-w-35.25 max-h-11 h-auto transition-all duration-300"
+          height={120}
+          className="w-30 h-30  transition-all duration-300"
         />
 
         {/* nav */}
@@ -124,7 +125,7 @@ const Navbar = () => {
                 alt="mail icon"
                 width={24}
                 height={24}
-                className="w-auto h-auto"
+                className="w-6 h-6"
               />
               Hire Me
             </Link>
