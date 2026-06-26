@@ -1,8 +1,8 @@
 import { StaticImageData } from "next/image";
-import Slack from "../../public/icons/company/Company=Slack.svg";
-import Telegram from "../../public/icons/company/Company=Telegram.svg";
-import Line from "../../public/icons/company/Company=Line.svg";
-import Skype from "../../public/icons/company/Company=Skype.svg";
+import Slack from "../../public/icons/icon-work-slack.svg";
+import Telegram from "../../public/icons/icon-work-telegram.svg";
+import Line from "../../public/icons/icon-work-line.svg";
+import Skype from "../../public/icons/icon-work-skype.svg";
 
 type ExperienceData = {
   id: number;
