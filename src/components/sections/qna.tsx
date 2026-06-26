@@ -32,7 +32,7 @@ export default function QnA() {
       </m.div>
 
       {/* === FIX UTAMA: KONTEN ACCORDION SCALABLE === */}
-      <div className="custom-container max-w-[1120px] mx-auto px-4 lg:px-0">
+      <div className="custom-container  mx-auto px-4 lg:px-0">
         {/* Induk Accordion diletakkan di luar looping agar manajemen open/close tersinkronisasi */}
         <Accordion type="single" collapsible className="w-full">
           {faqData.map((item) => (

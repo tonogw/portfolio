@@ -17,19 +17,20 @@ const Hero = () => {
   const words = ["I'm", "Edwin", "Anderson"];
 
   return (
-    <section id="home" className="relative h-209.5 lg:h-256 overflow-hidden">
+    <section id="home" className="relative  h-209.5 lg:h-256  overflow-hidden">
       {/* Background */}
-      <div className="absolute max-w-360 mx-auto inset-0 z-0">
+      <div className="absolute max-w-360 mx-auto px-4 md:px-10 inset-0 z-0">
         <Image
           src="/images/hero-backdrop-gradient.png"
           alt="color gradient"
           fill
           priority
+          sizes="1440"
           // width={1440}
           // height={1024}
           // loading="eager"
           className="
-
+          w-360 h-256
           object-cover object-center z-0"
         />
         {nodes.map((node, index) => (
@@ -58,14 +59,15 @@ const Hero = () => {
         <Image
           src="/images/hero-line.svg"
           alt="matrix line"
-          width={1440}
-          height={826}
+          fill
+          // width={1440}
+          // height={826}
           priority
           // className="object-contain object-bottom bottom-0 z-10"
           className="
             absolute top-100 lg:top-39.75
             left-1/2 -translate-x-1/2 z-10
-            min-w-150 lg:w-360
+            min-w-150 xl:w-360 xl:h-256
 
             "
         />
@@ -173,7 +175,7 @@ const Hero = () => {
         </div>
         {/* Sosmed blok */}
         <div className="absolute top-160 lg:top-204 inset-x-0  custom-container z-30 flex justify-between">
-          <div className="flex gap-4 ">
+          <div className="flex gap-4">
             {sosmedIcon.map((icon) => (
               <Link
                 href={icon.href}

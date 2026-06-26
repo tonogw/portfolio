@@ -252,7 +252,7 @@ html {
 @layer components {
   .custom-container {
     margin: 0 auto;
-    @apply max-w-90.25 md:max-w-164.5 lg:max-w-296;
+    @apply max-w-90.25 md:max-w-164.5 lg:max-w-236 xl:max-w-296;
   }
 }
 

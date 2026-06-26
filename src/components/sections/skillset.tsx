@@ -73,21 +73,21 @@ export default function Skillset() {
   return (
     <section
       id="skill"
-      className="max-w-360 mx-auto pt-80 lg:pt-20 bg-[#FFFFFF]"
+      className="max-w-360 min-h-237 mx-auto pt-80 lg:pt-20 bg-[#FFFFFF]"
     >
-      <div className="custom-container bg-blue-200">
+      <div className="custom-container">
         <m.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.6 }}
-          className="text-center"
+          className="flex flex-col items-center gap-4 text-center mb-14"
         >
-          <div className="h-27 gap-6 text-black bg-pink-200">
-            <p className="absolute left-1/2 -translate-x-1/2 bg-white py-0.5 px-4 border border-gray-300 rounded-full">
-              SKILL
-            </p>
-            <h2 className="font-bold items-center text-5xl pt-5">Skillset</h2>
-          </div>
+          {/* <div className="h-27 gap-6 text-black bg-pink-200 mt-20">
+          </div> */}
+          <span className="bg-white py-1 px-4 border border-gray-300 rounded-full shadow-xs">
+            SKILL
+          </span>
+          <h2 className="font-bold items-center text-5xl pt-5">Skillset</h2>
         </m.div>
         <m.div
           variants={container}
@@ -234,14 +234,14 @@ export default function Skillset() {
               alt="button next"
               width={64}
               height={64}
-              className="bg-amber-100 rounded-full my-8"
+              className="bg-gray-50 rounded-full my-8"
             />
             <Image
               src="/icons/button-next-right.svg"
               alt="button next"
               width={64}
               height={64}
-              className="bg-amber-100 rounded-full"
+              className="bg-gray-50 rounded-full"
             />
           </Button>
         </div>

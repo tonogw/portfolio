@@ -7,7 +7,7 @@ type FAQData = {
 export const faqData: FAQData[] = [
   {
     value: "item-1",
-    trigger: "What's your approach to fron-end development?",
+    trigger: "What's your approach to frontend development?",
     content:
       "I focus on clean, maintable code, and prioritize user experience. My approach involves close collaborations with designer to ensure exact implementation and seamless interactions all devices",
   },

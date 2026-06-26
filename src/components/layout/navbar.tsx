@@ -76,11 +76,11 @@ const Navbar = () => {
   return (
     <header
       className={`
-      fixed top-0 z-50 w-full transition-all duration-300 ease-in-out h-16 md:h-21.5 flex items-center
+      fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ease-in-out h-16 md:h-21.5 lg:h-20 flex items-center
       ${textColorClass} ${navbarBgClass}
       `}
     >
-      <div className="flex justify-between custom-container w-full">
+      <div className="custom-container mx-auto flex justify-between items-center  w-full">
         {/* Image logo - Otomatis berganti aset putih / hitam tergantung background section */}
         <Image
           src={
@@ -93,7 +93,7 @@ const Navbar = () => {
           // fill
           width={120}
           height={120}
-          className="w-30 h-30  transition-all duration-300"
+          className="w-30 h-30 transition-all duration-300"
         />
 
         {/* nav */}
