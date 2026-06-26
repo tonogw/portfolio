@@ -222,11 +222,11 @@ const Hero = () => {
                     priority
                     className={`
                       transition-all
-                      
+                      w-9 h-9
                       duration-300 
                       opacity-0
                       group-hover:opacity-100
-                      group-hover:w-6 h-6 group-hover:lg:w-9 lg:h-9
+                      group-hover:w-6 group-hover:h-6 group-hover:lg:w-9 lg:h-9
                        
                        group-hover:lg:hover:w-12
                       

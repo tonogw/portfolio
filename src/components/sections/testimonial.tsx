@@ -137,7 +137,7 @@ export default function Testimonial() {
                   if (!isTransitioning.current) setActiveIndex(realIdx);
                 }}
                 /* Pembagian lebar lajur gerbong slider: 100% penuh di mobile, atau pas 1/3 area (33.333%) di desktop */
-                className="w-full md:w-[33.333%] px-3 shrink-0 box-border transition-all duration-300"
+                className="w-full lg:w-[33.333%] px-3 shrink-0 box-border transition-all duration-300"
               >
                 {/* KARTU VISUAL UTAMA */}
                 <div

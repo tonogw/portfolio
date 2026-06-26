@@ -68,7 +68,7 @@ export default function Experience() {
               variants={itemVariants}
               whileHover={{ y: -2 }}
               /* Kontainer utama kartu mengikuti Screenshot Figma (361px di mobile, lebar penuh di desktop) */
-              className="relative flex flex-col md:flex-row items-start md:items-stretch border-2 border-purple-200/60 md:border-gray-100 bg-white rounded-3xl p-6 md:p-0 shadow-xs transition-all duration-300 hover:shadow-md w-full max-w-[361px] md:max-w-none mx-auto md:mx-0 pt-16 md:pt-0"
+              className="relative flex flex-col lg:flex-row items-start md:items-stretch border-2 border-purple-200/60 md:border-gray-100 bg-white rounded-3xl p-6 md:p-0 shadow-xs transition-all duration-300 hover:shadow-md w-full max-w-[361px] md:max-w-none mx-auto md:mx-0 pt-16 md:pt-0"
             >
               {/* === BLOK PERIODE TAHUN DENGAN LENGKUNGAN SVG ASLI FIGMA === */}
               <div className="absolute md:relative top-0 left-0 md:top-auto md:left-auto w-[109px] h-[53px] md:w-[140px] md:h-auto flex items-center justify-start pl-4 md:justify-center md:pl-0 text-white text-xs md:text-base font-bold shrink-0">
