@@ -95,7 +95,7 @@ export default function Project() {
               /* FIX 3: Ukuran presisi figma:
                  Mobile: Lebar terkunci 361px, aspek rasio 361/274.
                  Desktop: Lebar 50% minus gap, aspek rasio 580/441. */
-              className="relative w-[361px] aspect-[361/274] md:w-[calc(50%-12px)] md:aspect-[580/441] rounded-3xl overflow-hidden shadow-md group border border-gray-100 bg-gray-50 shrink-0"
+              className="relative w-90.25 aspect-[361/274px] md:w-[calc(50%-12px)] md:aspect-[580/441px] rounded-3xl overflow-hidden shadow-md group border border-gray-100 bg-gray-50 shrink-0"
             >
               {/* Gambar Mockup Proyek */}
               <Image
@@ -113,7 +113,7 @@ export default function Project() {
                 variants={{
                   hover: { opacity: 1, transition: { duration: 0.3 } },
                 }}
-                className="absolute bottom-0 left-0 w-full h-[242px] z-10 pointer-events-none"
+                className="absolute bottom-0 left-0 w-full h-60.5 z-10 pointer-events-none"
               >
                 <svg
                   width="100%"

@@ -52,4 +52,41 @@ export const testimoniData: TestimoniItemType[] = [
     message: "Working with them was a great experience.",
     avatar: avatarFemale,
   },
+  {
+    id: 5,
+    companyFile: "Company=GitHub.svg", // Sesuai dengan nama file di folder public
+    companyName: "Adobe",
+    name: "Jack Grealish",
+    role: "CEO GitHub",
+    message: "They tailor their solutions to our specific needs and goals.",
+    avatar: avatarJack,
+  },
+  {
+    id: 6,
+    companyFile: "Company=Contentful.svg",
+    companyName: "Contentful",
+    name: "Kevin De Bruyne",
+    role: "Project Manager Contentful",
+    message:
+      "They organized their work and internal management was outstanding.",
+    avatar: avatarKevin,
+  },
+  {
+    id: 7,
+    companyFile: "Company=BrowserStack.svg",
+    companyName: "Browser Stack",
+    name: "Jeremy Doku",
+    role: "Senior Developers Browser Stack",
+    message: "Working with them was a great experience.",
+    avatar: avatarJeremy,
+  },
+  {
+    id: 8,
+    companyFile: "Company=Upwork.svg",
+    companyName: "Upwork",
+    name: "Female Avatar",
+    role: "Senior Developers Upwork",
+    message: "Working with them was a great experience.",
+    avatar: avatarFemale,
+  },
 ];
