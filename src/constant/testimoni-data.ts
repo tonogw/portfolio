@@ -1,12 +1,13 @@
 import { StaticImageData } from "next/image";
-import avatarJack from "../../public/images/image-testi-JackGrealish.png";
-import avatarKevin from "../../public/images/image-testi-kevin.png";
-import avatarJeremy from "../../public/images/image-testi-jeremy.png";
+import avatarJack from "../../public/images/icon-about-avatar-male-1.png";
+import avatarKevin from "../../public/images/icon-about-avatar-male-2.png";
+import avatarJeremy from "../../public/images/icon-about-avatar-female-1.png";
 import avatarFemale from "../../public/images/image-testi-female.png";
 
 export interface TestimoniItemType {
   id: number;
-  companyKey: "adobe" | "airbnb" | "loom" | "spotify"; // Menggunakan key untuk memanggil logo SVG kustom nanti
+  companyFile: string; // Menyimpan nama file SVG asli secara dinamis
+  companyName: string;
   name: string;
   role: string;
   message: string;
@@ -16,7 +17,8 @@ export interface TestimoniItemType {
 export const testimoniData: TestimoniItemType[] = [
   {
     id: 1,
-    companyKey: "adobe",
+    companyFile: "Company=Adobe.svg", // Sesuai dengan nama file di folder public
+    companyName: "Adobe",
     name: "Jack Grealish",
     role: "CEO Adobe",
     message: "They tailor their solutions to our specific needs and goals.",
@@ -24,7 +26,8 @@ export const testimoniData: TestimoniItemType[] = [
   },
   {
     id: 2,
-    companyKey: "airbnb",
+    companyFile: "Company=Airbnb.svg",
+    companyName: "Airbnb",
     name: "Kevin De Bruyne",
     role: "Project Manager Air BNB",
     message:
@@ -33,7 +36,8 @@ export const testimoniData: TestimoniItemType[] = [
   },
   {
     id: 3,
-    companyKey: "loom",
+    companyFile: "Company=Loom.svg",
+    companyName: "Loom",
     name: "Jeremy Doku",
     role: "Senior Developers Loom",
     message: "Working with them was a great experience.",
@@ -41,7 +45,8 @@ export const testimoniData: TestimoniItemType[] = [
   },
   {
     id: 4,
-    companyKey: "spotify",
+    companyFile: "Company=Spotify.svg",
+    companyName: "Spotify",
     name: "Female Avatar",
     role: "Senior Developers Spotify",
     message: "Working with them was a great experience.",
