@@ -17,8 +17,6 @@ type SkillsetItem = {
   id: number;
   title: string;
   motion: MotionConfig;
-  // transition: Transition;
-
   src: string;
   label: string;
   icon: StaticImageData;
@@ -33,9 +31,8 @@ export const skillsetItemData: SkillsetItem[] = [
       animate: {
         rotate: [0, 360],
       },
-
       transition: {
-        duration: 5,
+        duration: 6,
         repeat: Infinity,
         ease: "linear",
       },
@@ -49,13 +46,14 @@ export const skillsetItemData: SkillsetItem[] = [
     id: 2,
     title: "Mongo DB",
     motion: {
+      /* FIX MOTION: Menaikkan jarak y ke 8px dan mengubah ease ke easeInOut agar efek mengambang kelihatan */
       animate: {
-        y: [0, 3, 0],
+        y: [0, 8, 0],
       },
       transition: {
-        duration: 5,
+        duration: 3,
         repeat: Infinity,
-        ease: "linear",
+        ease: "easeInOut",
       },
     },
     src: IconRing,
@@ -67,13 +65,14 @@ export const skillsetItemData: SkillsetItem[] = [
     id: 3,
     title: "Javascript",
     motion: {
+      /* FIX MOTION: Menggeser berlawanan arah (-8px) agar gerakannya silang dinamis antar kartu */
       animate: {
-        y: [0, -3, 0],
+        y: [0, -8, 0],
       },
       transition: {
-        duration: 5,
+        duration: 2.5,
         repeat: Infinity,
-        ease: "linear",
+        ease: "easeInOut",
       },
     },
     src: IconRing,
@@ -85,14 +84,15 @@ export const skillsetItemData: SkillsetItem[] = [
     id: 4,
     title: "Docker",
     motion: {
+      /* FIX MOTION: Kombinasi x dan y yang seimbang menghasilkan efek simulasi kapal bergoyang lembut di air */
       animate: {
-        x: [0, 3, 0],
-        y: [0, 2, 0],
+        x: [0, 4, 0],
+        y: [0, 6, 0],
       },
       transition: {
-        duration: 5,
+        duration: 3.5,
         repeat: Infinity,
-        ease: "linear",
+        ease: "easeInOut",
       },
     },
     src: IconRing,
@@ -108,7 +108,7 @@ export const skillsetItemData: SkillsetItem[] = [
         rotate: [0, 360],
       },
       transition: {
-        duration: 5,
+        duration: 7,
         repeat: Infinity,
         ease: "linear",
       },
@@ -122,13 +122,14 @@ export const skillsetItemData: SkillsetItem[] = [
     id: 6,
     title: "Typescript",
     motion: {
+      /* FIX MOTION: Skala denyut (pulse) dinaikkan sedikit agar perubahan ukuran terlihat tegas */
       animate: {
-        scale: [1, 1.05, 1],
+        scale: [1, 1.12, 1],
       },
       transition: {
-        duration: 5,
+        duration: 2.5,
         repeat: Infinity,
-        ease: "linear",
+        ease: "easeInOut",
       },
     },
     src: IconRing,
