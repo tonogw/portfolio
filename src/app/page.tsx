@@ -8,6 +8,7 @@ import StandOut from "@/components/sections/standout";
 import Project from "@/components/sections/project";
 import Experience from "@/components/sections/experience";
 import Testimonial from "@/components/sections/testimonial";
+import QnA from "@/components/sections/qna";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <Project />
       <Experience />
       <Testimonial />
+      <QnA />
     </>
   );
 }

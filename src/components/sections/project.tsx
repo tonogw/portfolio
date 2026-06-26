@@ -4,15 +4,26 @@ import Image from "next/image";
 import { projectItem } from "@/constant/project-data";
 import { motion as m, Variants } from "motion/react";
 import { Button } from "../ui/button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Project() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Menghitung jumlah kolom total berdasarkan aturan figma:
-  // Desktop: 1 baris, butuh n/2 langkah geser (jika tampil 2 sekaligus)
-  // Mobile: 2 baris otomatis berpasangan di dalam 1 kolom penuh. Jadi total kolom = total item / 2
-  const totalSlides = projectItem.length / 2;
+  // 1. Deteksi ukuran layar untuk menentukan batas langkah slider
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // 2. FIX LOGIKA: Menghitung total batas slide secara dinamis agar scalable tanpa batas
+  const totalSlides = isMobile
+    ? Math.ceil(projectItem.length / 2) // Mobile: bergeser per kolom (1 kolom isi 2 baris)
+    : projectItem.length - 1; // Desktop: bergeser agar item terakhir bisa maju ke posisi kolom ke-2
 
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
@@ -74,17 +85,13 @@ export default function Project() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
-          /* FIX 1: Kalkulasi geser dinamis. 
-             Mobile: geser 100% per kolom (berisi 2 baris). Desktop: geser 50% per langkah. */
+          /* FIX PERGESERAN: Mengikuti perubahan state dinamis */
           animate={{
-            x:
-              typeof window !== "undefined" && window.innerWidth < 768
-                ? `calc(-${currentIndex * 100}% - ${currentIndex * 24}px)`
-                : `calc(-${currentIndex * 50}% - ${currentIndex * 24}px)`,
+            x: isMobile
+              ? `calc(-${currentIndex * 100}% - ${currentIndex * 24}px)`
+              : `calc(-${currentIndex * 50}% - ${currentIndex * 24}px)`,
           }}
           transition={{ type: "spring", stiffness: 260, damping: 28 }}
-          /* FIX 2: Mobile menggunakan grid 2 baris mengalir ke kanan (grid-flow-col). 
-             Desktop (md) kembali normal menjadi susunan flexbox 1 baris horizontal. */
           className="grid grid-rows-2 grid-flow-col md:flex md:flex-row gap-6 w-full cursor-grab active:cursor-grabbing"
         >
           {projectItem.map((item) => (
@@ -92,10 +99,7 @@ export default function Project() {
               key={item.id}
               variants={cardVariants}
               whileHover="hover"
-              /* FIX 3: Ukuran presisi figma:
-                 Mobile: Lebar terkunci 361px, aspek rasio 361/274.
-                 Desktop: Lebar 50% minus gap, aspek rasio 580/441. */
-              className="relative w-90.25 aspect-[361/274px] md:w-[calc(50%-12px)] md:aspect-[580/441px] rounded-3xl overflow-hidden shadow-md group border border-gray-100 bg-gray-50 shrink-0"
+              className="relative w-90.25 aspect-[361/274] md:w-[calc(50%-12px)] md:aspect-[580/441] rounded-3xl overflow-hidden shadow-md group border border-gray-100 bg-gray-50 shrink-0"
             >
               {/* Gambar Mockup Proyek */}
               <Image
