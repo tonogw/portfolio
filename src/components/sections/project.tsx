@@ -29,7 +29,7 @@ export default function Project() {
   return (
     /* FIX 1: Mengubah absolute menjadi relative standar agar alur baris section portofolio mengantre rapi */
     <section
-      id="project"
+      id="projects"
       className="relative w-full max-w-360 mx-auto bg-white py-20 text-black overflow-hidden"
     >
       {/* Bagian Header Judul */}
@@ -76,7 +76,7 @@ export default function Project() {
             />
 
             {/* Efek Gradasi Hitam Transparan Halus di bagian bawah agar teks putih figma mudah dibaca */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent z-10" />
+            <div className="absolute inset-0 bg-linier-to-t from-black/60 via-black/10 to-transparent z-10" />
 
             {/* === FIX 3: OVERLAY TEKS & TECH STACK (Di letakkan di Kiri Bawah di atas gambar) === */}
             <div className="absolute bottom-0 left-0 w-full p-6 lg:p-8 z-20 flex flex-col gap-4 items-start text-left">

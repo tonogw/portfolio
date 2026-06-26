@@ -17,7 +17,7 @@ export const projectItem: ProjectItem[] = [
     tech: ["React", "Tailwind", "Responsive"],
   },
   {
-    id: 1,
+    id: 2,
     title: "Digital Wallet",
     image: projWallet,
     tech: ["React", "Tailwind", "Responsive"],

@@ -17,7 +17,7 @@ const Hero = () => {
   const words = ["I'm", "Edwin", "Anderson"];
 
   return (
-    <section id="hero" className="relative h-209.5 lg:h-256 overflow-hidden">
+    <section id="home" className="relative h-209.5 lg:h-256 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 z-0">
         {/* <Image

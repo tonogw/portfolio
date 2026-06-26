@@ -6,27 +6,27 @@ type Navigation = {
 export const navigationData: Navigation[] = [
   {
     label: "Home",
-    href: "home",
+    href: "#home",
   },
 
   {
     label: "About",
-    href: "about",
+    href: "#about",
   },
   {
     label: "Skill",
-    href: "skill",
+    href: "#skill",
   },
   {
     label: "Projects",
-    href: "projects",
+    href: "#project",
   },
   {
     label: "FAQ",
-    href: "faq",
+    href: "#faq",
   },
   {
     label: "Contact",
-    href: "contact",
+    href: "#contact",
   },
 ];
