@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Send } from "lucide-react";
-
+import ContactDialog from "../contact/ContactDialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -289,91 +289,8 @@ export default function Contact() {
             </m.div>
           </form>
         </m.div>
-        <AnimatePresence>
-          {showDialog && (
-            <m.div
-              initial={{
-                opacity: 0,
-              }}
-              animate={{
-                opacity: 1,
-              }}
-              exit={{
-                opacity: 0,
-              }}
-              className="
-                fixed
-                inset-0
-                z-100
-                flex
-                items-center
-                justify-center
-                bg-black/40
-                backdrop-blur-md
-                "
-            >
-              <m.div
-                initial={{
-                  scale: 0.9,
-                  opacity: 0,
-                }}
-                animate={{
-                  scale: 1,
-                  opacity: 1,
-                }}
-                exit={{
-                  scale: 0.9,
-                  opacity: 0,
-                }}
-                transition={{
-                  duration: 0.25,
-                }}
-                className="
-                  w-90
-                  rounded-[32px]
-                  bg-white
-                  p-8
-                  shadow-2xl
-                  "
-              >
-                <SubmitAnimation state={animationState} />
 
-                <p
-                  className="
-                    mt-6
-                    text-center
-                    text-xl
-                    font-bold
-                    "
-                >
-                  {animationState === "loading" && "Sending..."}
-
-                  {animationState === "success" && "Message Sent"}
-
-                  {animationState === "error" && "Submission Failed"}
-                </p>
-
-                <p
-                  className="
-                    mt-2
-                    text-center
-                    text-sm
-                    text-neutral-500
-                    "
-                >
-                  {animationState === "loading" &&
-                    "Please wait while your message is being delivered."}
-
-                  {animationState === "success" &&
-                    "Thank you for contacting me. I will get back to you soon."}
-
-                  {animationState === "error" &&
-                    "Please review the highlighted fields and try again."}
-                </p>
-              </m.div>
-            </m.div>
-          )}
-        </AnimatePresence>
+        <ContactDialog open={showDialog} state={animationState} />
       </div>
     </section>
   );
