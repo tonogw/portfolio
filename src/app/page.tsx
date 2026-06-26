@@ -9,6 +9,7 @@ import Project from "@/components/sections/project";
 import Experience from "@/components/sections/experience";
 import Testimonial from "@/components/sections/testimonial";
 import QnA from "@/components/sections/qna";
+import Contact from "@/components/sections/contact";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       <Experience />
       <Testimonial />
       <QnA />
+      <Contact />
     </>
   );
 }
