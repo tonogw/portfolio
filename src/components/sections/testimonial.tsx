@@ -105,7 +105,7 @@ export default function Testimonial() {
   return (
     <section
       id="testimonials"
-      className="relative w-full bg-white py-20 text-black overflow-hidden"
+      className="relative max-w-360 mx-auto bg-white py-20 text-black overflow-hidden"
     >
       {/* Header Judul */}
       <div className="custom-container text-center flex flex-col items-center gap-3 mb-16">
