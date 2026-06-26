@@ -3,22 +3,27 @@
 import { useState } from "react";
 import { motion as m, AnimatePresence } from "motion/react";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
+import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Send } from "lucide-react";
-import ContactDialog from "../contact/ContactDialog";
+import ContactDialog from "@/components/contact/ContactDialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import type { AnimationState } from "@/components/animation/envelope/types";
 
 import SubmitAnimation from "@/components/animation/SubmitAnimation";
+import { resolve } from "path";
 
 type ContactForm = z.infer<typeof contactSchema>;
 
 type AnimationState = "idle" | "loading" | "success" | "error";
 
 const contactSchema = z.object({
-  name: z.string().trim().min(2, "Please enter at least 2 characters."),
+  name: z
+    .string()
+    .trim()
+    .min(2, "Please enter your name, at least 2 characters."),
 
   email: z.string().trim().email("Please enter a valid email address."),
 
@@ -29,9 +34,10 @@ const contactSchema = z.object({
 });
 
 export default function Contact() {
-  const [animationState, setAnimationState] = useState<AnimationState>("idle");
+  // const [showDialog, setShowDialog] = useState(false);
 
-  const [showDialog, setShowDialog] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [animationState, setAnimationState] = useState<AnimationState>("idle");
 
   const form = useForm<ContactForm>({
     resolver: zodResolver(contactSchema),
@@ -45,40 +51,50 @@ export default function Contact() {
     },
   });
 
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<ContactForm>({
+    resolver: zodResolver(contactSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      message: "",
+    },
+  });
+
   const onSubmit = async (data: ContactForm) => {
-    setShowDialog(true);
+    setDialogOpen(true);
 
     setAnimationState("loading");
 
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    await new Promise((resolve) => setTimeout(resolve, 1800));
+
+    const success = Math.random() > 0.25;
+
+    if (success) {
+      setAnimationState("success");
+
+      reset();
+    } else {
+      setAnimationState("error");
+    }
+
+    await new Promise((resolve) => setTimeout(resolve, 1800));
+
+    setDialogOpen(false);
+
+    setAnimationState("idle");
 
     console.log(data);
-
-    setAnimationState("success");
-
-    form.reset();
-
-    setTimeout(() => {
-      setShowDialog(false);
-
-      setAnimationState("idle");
-    }, 1800);
-  };
-
-  const onError = () => {
-    setShowDialog(true);
-
-    setAnimationState("error");
-
-    setTimeout(() => {
-      setShowDialog(false);
-
-      setAnimationState("idle");
-    }, 1800);
   };
 
   return (
     <section id="contact" className="relative overflow-hidden bg-white py-28">
+      <ContactDialog open={dialogOpen} state={animationState} />
+
       <div
         className="absolute inset-0 opacity-40"
         style={{
@@ -134,11 +150,7 @@ export default function Contact() {
             md:p-12
           "
         >
-          <form
-            noValidate
-            onSubmit={form.handleSubmit(onSubmit, onError)}
-            className="space-y-7"
-          >
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             {/* ================= Name ================= */}
             <div className="space-y-2">
               <label
@@ -152,7 +164,7 @@ export default function Contact() {
                 id="name"
                 placeholder="Your full name"
                 autoComplete="name"
-                {...form.register("name")}
+                {...register("name")}
                 className={`
                 h-13 rounded-xl bg-neutral-50
                 transition-all
@@ -164,9 +176,9 @@ export default function Contact() {
               `}
               />
 
-              {form.formState.errors.name && (
+              {errors.name && (
                 <p className="text-sm font-medium text-red-500">
-                  {form.formState.errors.name.message}
+                  {errors.name.message}
                 </p>
               )}
             </div>
@@ -184,21 +196,21 @@ export default function Contact() {
                 type="email"
                 autoComplete="email"
                 placeholder="your@email.com"
-                {...form.register("email")}
+                {...register("email")}
                 className={`
                 h-13 rounded-xl bg-neutral-50
                 transition-all
                 ${
-                  form.formState.errors.email
+                  errors.email
                     ? "border-red-500 focus-visible:ring-red-500"
                     : "border-neutral-200 focus-visible:border-violet-500"
                 }
               `}
               />
 
-              {form.formState.errors.email && (
+              {errors.email && (
                 <p className="text-sm font-medium text-red-500">
-                  {form.formState.errors.email.message}
+                  {errors.email.message}
                 </p>
               )}
             </div>
@@ -215,37 +227,37 @@ export default function Contact() {
                 id="message"
                 rows={6}
                 placeholder="Tell me about your project..."
-                {...form.register("message")}
+                {...register("message")}
                 className={`
                 resize-none rounded-2xl
                 bg-neutral-50
                 transition-all
                 ${
-                  form.formState.errors.message
+                  errors.message
                     ? "border-red-500 focus-visible:ring-red-500"
                     : "border-neutral-200 focus-visible:border-violet-500"
                 }
               `}
               />
 
-              {form.formState.errors.message && (
+              {errors.message && (
                 <p className="text-sm font-medium text-red-500">
-                  {form.formState.errors.message.message}
+                  {errors.message.message}
                 </p>
               )}
             </div>
 
             <m.div
               whileHover={{
-                scale: 1.01,
+                scale: 1.02,
               }}
               whileTap={{
-                scale: 0.99,
+                scale: 0.97,
               }}
             >
               <Button
                 type="submit"
-                disabled={animationState === "loading"}
+                disabled={isSubmitting}
                 className="
                   h-14
                   w-full
@@ -264,10 +276,10 @@ export default function Contact() {
                   disabled:opacity-70
                 "
               >
-                {animationState === "loading" ? (
-                  <>
-                    <span
-                      className="
+                {/* {animationState === "loading" ? ( */}
+                <>
+                  <span
+                    className="
                           h-5
                           w-5
                           animate-spin
@@ -276,21 +288,21 @@ export default function Contact() {
                           border-white
                           border-t-transparent
                         "
-                    />
-                    Sending...
-                  </>
-                ) : (
-                  <>
-                    <Send className="mr-2 h-4 w-4" />
-                    Submit
-                  </>
-                )}
+                  />
+                  Sending...
+                  {/* </> */}
+                  {/* ) : ( */}
+                  {/* <> */}
+                  <Send className="mr-2 h-4 w-4" />
+                  Submit
+                </>
+                {/* )} */}
               </Button>
             </m.div>
           </form>
         </m.div>
 
-        <ContactDialog open={showDialog} state={animationState} />
+        {/* <ContactDialog open={showDialog} state={animationState} /> */}
       </div>
     </section>
   );
