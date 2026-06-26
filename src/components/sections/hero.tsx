@@ -19,15 +19,7 @@ const Hero = () => {
   return (
     <section id="home" className="relative h-209.5 lg:h-256 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 z-0">
-        {/* <Image
-          src="/images/image-hero.png"
-          alt="Hero image"
-          width={1440}
-          height={1024}
-          loading="eager"
-        /> */}
-
+      <div className="absolute max-w-360 mx-auto inset-0 z-0">
         <Image
           src="/images/hero-backdrop-gradient.png"
           alt="color gradient"
