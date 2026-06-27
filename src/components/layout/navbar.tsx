@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { motion as m } from "motion/react";
-import { Sun, Moon, Menu, Sunrise } from "lucide-react";
+import { Sun, Moon, Menu } from "lucide-react";
 
 import {
   Sheet,
@@ -17,22 +17,24 @@ import {
 } from "@/components/ui/sheet";
 
 const Navbar = () => {
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme(); // Gunakan resolvedTheme agar lebih akurat mendeteksi sistem/laptop
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  // const [isDarkBg, setIsDarkBg] = useState(true);
-
-  // const isDarkBg = scrolled || isLightBg;
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setScrolled(true); //(window.scrollY > 0 && isDarkBg);
+      // PERBAIKAN: Begitu scroll > 0, langsung aktifkan efek kabut/blur & deteksi warna
+      if (window.scrollY > 10) {
+        setScrolled(true);
       } else {
         setScrolled(false);
       }
       setMounted(true);
     };
+
+    // Jalankan sekali saat load pertama
+    handleScroll();
+
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -40,20 +42,23 @@ const Navbar = () => {
   }, []);
 
   if (!mounted) return null;
-  const isDarkMode = theme === "dark";
 
+  // Cek apakah mode gelap sedang aktif secara valid
+  const isDarkMode = resolvedTheme === "dark";
+
+  // WARNA TEKS PINTAR: Menjadi hitam jika sudah scroll DI LUAR mode gelap global
   const isTextBlack = scrolled && !isDarkMode;
 
   return (
     <header
       className={`
-      fixed px-4 top-0 z-50 w-full text-white
-      ${isTextBlack ? "text-black" : "text-white"}
-      ${scrolled ? "backdrop-blur-3xl" : "bg-transparent"}
+        fixed px-4 top-0 z-50 w-full transition-all duration-300
+        ${isTextBlack ? "text-neutral-900" : "text-white"}
+        ${scrolled ? "bg-white/70 dark:bg-neutral-900/70 backdrop-blur-md shadow-xs border-b border-neutral-200/20" : "bg-transparent"}
       `}
     >
-      <div className="flex-between custom-container  h-16 md:h-21.5">
-        {/* Image logo */}
+      <div className="flex items-center justify-between custom-container h-16 md:h-21.5">
+        {/* 1. LOGO BERUBAH WARNA SESUAI BACKGROUND */}
         <Image
           src={
             isTextBlack
@@ -64,18 +69,16 @@ const Navbar = () => {
           priority
           width={120}
           height={40}
-          className="
-          max-w-35.25 max-h-11 h-auto
-          "
+          className="max-w-35.25 max-h-11 h-auto"
         />
 
-        {/* nav */}
+        {/* 2. NAVIGATION DESKTOP */}
         <nav className="hidden lg:block">
-          <ul className="flex-start gap-8">
+          <ul className="flex items-center justify-start gap-8 font-semibold">
             {navigationData.map((data) => (
               <li key={data.label}>
                 <Link
-                  className={`transition-colors ${isTextBlack ? "text-black hover:text-violet-600" : "text-white hover:text-primary-200"}`}
+                  className={`transition-colors ${isTextBlack ? "hover:text-violet-600" : "hover:text-primary-200"}`}
                   href={data.href}
                 >
                   {data.label}
@@ -85,89 +88,77 @@ const Navbar = () => {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-4">
-          <m.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+        {/* 3. AREA KANAN (TOGGLE THEME + HIRE ME + MOBILE MENU) */}
+        <div className="flex items-center gap-3 md:gap-4">
+          {/* INTERAKTIF TOGGLE DARK / LIGHT (Bulan & Sun Berganti Presisi) */}
+          <m.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setTheme(isDarkMode ? "light" : "dark")}
-              className={`rounded-full h-10 w-10 border ${
+              className={`rounded-full h-10 w-10 border transition-colors cursor-pointer ${
                 isTextBlack
-                  ? "border-neutral-200 text-black hover:bg-neutral-100"
+                  ? "border-neutral-200 text-neutral-900 hover:bg-neutral-100"
                   : "border-neutral-800 text-white hover:bg-white/10"
               }`}
-              aria-label="Toggle-theme"
+              aria-label="Toggle theme"
             >
               {isDarkMode ? (
-                <Sun className="h-[1.2rem] w-[1.2rem] text-yellow-400" />
+                <Sun className="h-5 w-5 text-yellow-400 fill-yellow-400 animate-pulse" />
               ) : (
-                // src={
-                //   theme === "dark"
-                //   ? "/icons/icon-sun.svg"
-                //   : "/icons/icon-moon.svg"
-                // }
-                // alt="theme toggle"
-                // width={24}
-                // height={24}
-                // className="dark:stroke-white"
                 <Moon
-                  className={`h-[1.2rem] w-[1.2rem]${isTextBlack ? "text-neutral-900" : "text-white"} text-yellow-400`}
+                  className={`h-5 w-5 ${isTextBlack ? "text-neutral-900 fill-neutral-900" : "text-white fill-transparent"}`}
                 />
               )}
             </Button>
           </m.div>
 
-          <m.div
-            whileHover={{
-              scale: 1.1,
-            }}
-            whileTap={{
-              scale: 0.98,
-            }}
-          >
-            {/* button */}
+          {/* BUTTON HIRE ME (DESKTOP) */}
+          <m.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
             <Button
               asChild
-              variant="default"
-              className="hidden lg:flex px-12 gap-2 rounded-full h-12 bg-linear-50 from-[#9747FF] to-[#1179FC] hover:shadow-2xl"
+              className="hidden lg:flex px-8 gap-2 rounded-full h-12 bg-linear-to-r from-[#9747FF] to-[#1179FC] hover:shadow-xl transition-all"
             >
-              <Link href="/contact" className="font-medium">
+              <Link href="#contact" className="font-semibold text-white">
                 <Image
                   src="/icons/icon-mail-white.svg"
                   alt="mail icon"
-                  width={24}
-                  height={24}
-                  className="w-auto h-auto"
+                  width={20}
+                  height={20}
                 />
                 Hire Me
               </Link>
             </Button>
           </m.div>
 
-          {/* sheet button */}
+          {/* PERBAIKAN: SHEET NAVIGATION UNTUK TABLET (768px) & MOBILE */}
           <Sheet>
             <SheetTrigger asChild>
-              {/* <Menu
-              className="cursor-pointer lg:hidden"
-              aria-label="Open main navigation"
-              /> */}
-              <Image
-                src="/icons/icon-menu.svg"
-                alt="menu"
-                width={24}
-                height={24}
-                className="cursor-pointer lg:hidden"
-                aria-label="Open main navigation"
-              />
+              <Button
+                variant="ghost"
+                size="icon"
+                // Dipaksa muncul di bawah layar 1024px (termasuk 768px md) menggunakan lg:hidden
+                className={`lg:hidden rounded-full h-10 w-10 flex items-center justify-center cursor-pointer ${
+                  isTextBlack
+                    ? "text-neutral-900 hover:bg-neutral-100"
+                    : "text-white hover:bg-white/10"
+                }`}
+              >
+                <Menu className="h-6 w-6 stroke-[2.5]" />
+              </Button>
             </SheetTrigger>
-            <SheetContent>
+
+            <SheetContent
+              side="right"
+              className="bg-white dark:bg-neutral-950 p-6"
+            >
               <nav className="mt-16" aria-label="Mobile Navigation">
                 <ul className="flex flex-col gap-4">
                   {navigationData.map((data) => (
                     <li key={data.label}>
                       <SheetClose asChild>
                         <Link
-                          className="hover:text-primary-200 p-4"
+                          className="block p-3 rounded-xl font-bold text-lg text-neutral-900 dark:text-white hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors"
                           href={data.href}
                         >
                           {data.label}
@@ -177,9 +168,13 @@ const Navbar = () => {
                   ))}
                 </ul>
               </nav>
-              <Button asChild className="mt-3 w-full">
+
+              <Button
+                asChild
+                className="mt-8 w-full h-12 rounded-full bg-linear-to-r from-[#9747FF] to-[#1179FC] text-white font-semibold shadow-md"
+              >
                 <SheetClose asChild>
-                  <Link href="#contact">Me Hire</Link>
+                  <Link href="#contact">Hire Me</Link>
                 </SheetClose>
               </Button>
             </SheetContent>
