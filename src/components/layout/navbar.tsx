@@ -85,8 +85,8 @@ const Navbar = () => {
         <Image
           src={
             isDarkBg
-              ? "/icons/icon-logo-white.svg"
-              : "/icons/icon-logo-black.svg"
+              ? "/icons/icon-logo-black.svg"
+              : "/icons/icon-logo-white.svg"
           }
           alt="logo"
           priority

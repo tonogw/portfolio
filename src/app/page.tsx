@@ -10,6 +10,8 @@ import Experience from "@/components/sections/experience";
 import Testimonial from "@/components/sections/testimonial";
 import QnA from "@/components/sections/qna";
 import Contact from "@/components/sections/contact";
+// import ContactDialog from "@/components/contact/ContactDialog";
+// import SubmitAnimation from "@/components/animation/SubmitAnimation";
 
 export default function Home() {
   return (
@@ -24,6 +26,7 @@ export default function Home() {
       <Testimonial />
       <QnA />
       <Contact />
+      {/* <SubmitAnimation /> */}
     </>
   );
 }
