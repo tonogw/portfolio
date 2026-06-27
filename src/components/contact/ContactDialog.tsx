@@ -33,89 +33,91 @@ function DialogContent({
   }, [state]);
 
   return (
-    <m.div
-      initial={{ opacity: 0, scale: 0.88, y: 30 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.88, y: 30 }}
-      transition={{ duration: 0.35 }}
-      className="w-full max-w-145 rounded-[32px] bg-white p-10 shadow-2xl relative flex flex-col items-center"
-    >
-      {/* Box Animasi Amplop (160x160) */}
-      <div className="w-40 h-40 flex items-center justify-center">
-        <SubmitAnimation state={state} />
-      </div>
+    <section id="dialog">
+      <m.div
+        initial={{ opacity: 0, scale: 0.88, y: 30 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.88, y: 30 }}
+        transition={{ duration: 0.35 }}
+        className="w-full max-w-145 rounded-[32px] bg-white p-10 shadow-2xl relative flex flex-col items-center"
+      >
+        {/* Box Animasi Amplop (160x160) */}
+        <div className="w-40 h-40 flex items-center justify-center">
+          <SubmitAnimation state={state} />
+        </div>
 
-      <div className="mt-6 text-center w-full min-h-11xl flex flex-col items-center justify-center">
-        {/* SKENARIO A: SEDANG DIKIRIM (LOADING) ATAU AMPLOP SEDANG BERPROSES */}
-        {(state === "loading" ||
-          ((state === "success" || state === "error") &&
-            !showFinalResponse)) && (
-          <div className="flex flex-col items-center animate-pulse">
-            <h3 className="text-3xl font-black text-black tracking-tight">
-              Sending Message...
-            </h3>
-            <p className="mt-4 text-neutral-500 text-md leading-relaxed">
-              Please wait while your message is being delivered.
-            </p>
-          </div>
-        )}
+        <div className="mt-6 text-center w-full min-h-11xl flex flex-col items-center justify-center">
+          {/* SKENARIO A: SEDANG DIKIRIM (LOADING) ATAU AMPLOP SEDANG BERPROSES */}
+          {(state === "loading" ||
+            ((state === "success" || state === "error") &&
+              !showFinalResponse)) && (
+            <div className="flex flex-col items-center animate-pulse">
+              <h3 className="text-3xl font-black text-black tracking-tight">
+                Sending Message...
+              </h3>
+              <p className="mt-4 text-neutral-500 text-md leading-relaxed">
+                Please wait while your message is being delivered.
+              </p>
+            </div>
+          )}
 
-        {/* SKENARIO B: SUKSES (Amplop Selesai Menutup & Tersegel) */}
-        {state === "success" && showFinalResponse && (
-          <m.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="w-full flex flex-col items-center"
-          >
-            <h3 className="text-3xl font-black text-black tracking-tight">
-              Message Sent Successfully!
-            </h3>
-            <p className="mt-4 text-neutral-500 text-md leading-relaxed">
-              Thank you for reaching out. I&apos;ll get back to you as soon as
-              possible.
-            </p>
-
+          {/* SKENARIO B: SUKSES (Amplop Selesai Menutup & Tersegel) */}
+          {state === "success" && showFinalResponse && (
             <m.div
-              className="mt-8 w-full"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="w-full flex flex-col items-center"
             >
-              <Button
-                onClick={onClose}
-                className="h-14 w-full rounded-full bg-[#7C5CFF] hover:bg-[#6944FF] text-base font-semibold text-white transition-all shadow-[0_4px_16px_rgba(124,92,255,0.3)]"
-              >
-                Back to Home
-              </Button>
-            </m.div>
-          </m.div>
-        )}
+              <h3 className="text-3xl font-black text-black tracking-tight">
+                Message Sent Successfully!
+              </h3>
+              <p className="mt-4 text-neutral-500 text-md leading-relaxed">
+                Thank you for reaching out. I&apos;ll get back to you as soon as
+                possible.
+              </p>
 
-        {/* SKENARIO C: GAGAL */}
-        {state === "error" && showFinalResponse && (
-          <m.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="w-full flex flex-col items-center"
-          >
-            <h3 className="text-3xl font-black text-rose-600 tracking-tight">
-              Submission Failed
-            </h3>
-            <p className="mt-4 text-neutral-500 text-md leading-relaxed">
-              Please check your network information and try again.
-            </p>
-
-            <m.div className="mt-8 w-full">
-              <Button
-                onClick={onClose}
-                className="h-14 w-full rounded-full bg-neutral-900 hover:bg-black text-base font-semibold text-white transition-all shadow-md"
+              <m.div
+                className="mt-8 w-full"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
-                Try Again
-              </Button>
+                <Button
+                  onClick={onClose}
+                  className="h-14 w-full rounded-full bg-[#7C5CFF] hover:bg-[#6944FF] text-base font-semibold text-white transition-all shadow-[0_4px_16px_rgba(124,92,255,0.3)]"
+                >
+                  Back to Home
+                </Button>
+              </m.div>
             </m.div>
-          </m.div>
-        )}
-      </div>
-    </m.div>
+          )}
+
+          {/* SKENARIO C: GAGAL */}
+          {state === "error" && showFinalResponse && (
+            <m.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="w-full flex flex-col items-center"
+            >
+              <h3 className="text-3xl font-black text-rose-600 tracking-tight">
+                Submission Failed
+              </h3>
+              <p className="mt-4 text-neutral-500 text-md leading-relaxed">
+                Please check your network information and try again.
+              </p>
+
+              <m.div className="mt-8 w-full">
+                <Button
+                  onClick={onClose}
+                  className="h-14 w-full rounded-full bg-neutral-900 hover:bg-black text-base font-semibold text-white transition-all shadow-md"
+                >
+                  Try Again
+                </Button>
+              </m.div>
+            </m.div>
+          )}
+        </div>
+      </m.div>
+    </section>
   );
 }
 

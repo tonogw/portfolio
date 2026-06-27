@@ -23,24 +23,37 @@ export default function Home() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // PERBAIKAN: Diperbesar batasnya dari 100px menjadi 900px
-      // Dengan begini, Ghost Button baru akan lahir setelah melewati Hero & About (mulai di Skillset)
-      if (window.scrollY > 900) {
-        setShowGhostButton(true);
+      // PERBAIKAN UTAMA: Cari elemen fisik section skillset
+      const skillsetSection = document.getElementById("skillset");
+
+      if (skillsetSection) {
+        const rect = skillsetSection.getBoundingClientRect();
+
+        // Jika bagian atas section skillset sudah naik mendekati atau melewati viewport atas layar
+        if (rect.top <= window.innerHeight) {
+          setShowGhostButton(true);
+        } else {
+          setShowGhostButton(false);
+        }
       } else {
-        setShowGhostButton(false);
+        // Fallback cadangan jika ID tidak ditemukan, gunakan piksel aman
+        setShowGhostButton(window.scrollY > 400);
       }
 
-      // Deteksi apakah user sudah mentok sampai di paling bawah halaman
+      // Deteksi apakah user sudah mentok sampai di paling bawah halaman portofolio
       const totalPageHeight = document.documentElement.scrollHeight;
       const currentScrollPosition = window.scrollY + window.innerHeight;
 
+      // Jika sisa jarak kurang dari 50px, ubah status menjadi di dasar halaman
       if (totalPageHeight - currentScrollPosition < 50) {
         setIsAtBottom(true);
       } else {
         setIsAtBottom(false);
       }
     };
+
+    // Jalankan sekali di awal untuk ancang-ancang
+    handleScroll();
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -76,10 +89,12 @@ export default function Home() {
       {/* <SubmitAnimation /> */}
 
       {/* GHOST TRIGGER AREA (FIXED POSITION) */}
+      {/* GHOST TRIGGER AREA (FIXED POSITION - FIXED Z-INDEX & KONTRAS THEME) */}
       <AnimatePresence>
         {showGhostButton && (
           <m.div
-            className="fixed bottom-10 right-10 z-50 group flex items-center justify-center w-44 h-24"
+            // PERBAIKAN: z-50 diubah menjadi z-[99] agar melayang di paling depan global
+            className="fixed bottom-10 right-10 z-99 group flex items-center justify-center w-44 h-24"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -91,18 +106,23 @@ export default function Home() {
               whileTap={{ scale: 0.95 }}
             >
               <Button
-                onClick={handlePureScroll} // <--- Menggunakan fungsi scroll piksel murni
-                className="gap-2 py-2 px-4 h-12 w-full rounded-full bg-black/80 backdrop-blur-md border border-neutral-800 hover:bg-neutral-900 text-white shadow-2xl cursor-pointer"
+                onClick={handlePureScroll}
+                // PERBAIKAN: Memastikan text-white dan background solid agar tidak tembus pandang di background gelap/terang
+                className="gap-2 py-2 px-4 h-12 w-full rounded-full bg-neutral-950 dark:bg-white text-white dark:text-neutral-950 border border-neutral-800 dark:border-neutral-200 hover:bg-neutral-900 dark:hover:bg-neutral-100 shadow-2xl cursor-pointer font-bold"
               >
                 <span className="text-xs font-semibold tracking-wider uppercase">
                   {isAtBottom ? "Back To Top" : "Scroll Down"}
                 </span>
                 <Image
-                  src="/icons/icon-scrolldown-white.svg"
+                  src={
+                    isAtBottom
+                      ? "/icons/icon-scrolldown-white.svg"
+                      : "/icons/icon-scrolldown-black.svg"
+                  }
                   alt="arrow navigation"
                   width={16}
                   height={16}
-                  className={`w-4 h-4 transition-transform duration-500 ${
+                  className={`w-4 h-4 transition-transform duration-500 inversion dark:invert ${
                     isAtBottom ? "rotate-180" : "animate-bounce"
                   }`}
                 />
