@@ -1,10 +1,13 @@
 "use client";
+
 import { Button } from "@/components/ui/button";
 import { navigationData } from "@/constant/navigation-data";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { useTheme } from "next-themes";
 import { motion as m } from "motion/react";
+import { Sun, Moon, Menu, Sunrise } from "lucide-react";
 
 import {
   Sheet,
@@ -14,95 +17,65 @@ import {
 } from "@/components/ui/sheet";
 
 const Navbar = () => {
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [isDarkBg, setIsDarkBg] = useState(true); // Default true karena start di Hero (Gelap)
+  // const [isDarkBg, setIsDarkBg] = useState(true);
+
+  // const isDarkBg = scrolled || isLightBg;
 
   useEffect(() => {
-    // 1. Deteksi scroll sederhana untuk efek blur background navbar
     const handleScroll = () => {
-      setScrolled(window.scrollY > 0);
+      if (window.scrollY > 0) {
+        setScrolled(true); //(window.scrollY > 0 && isDarkBg);
+      } else {
+        setScrolled(false);
+      }
+      setMounted(true);
     };
-    window.addEventListener("scroll", handleScroll);
-
-    // 2. FIX TOTAL: Intersection Observer untuk mendeteksi section gelap secara akurat
-    const observerOptions = {
-      root: null,
-      rootMargin: "-20px 0px -80% 0px", // Hanya mendeteksi bagian atas layar (area tempat navbar diam)
-      threshold: 0,
-    };
-
-    const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        // Jika section berlatar gelap (#hero atau #contact) masuk ke area atas layar
-        if (entry.isIntersecting) {
-          setIsDarkBg(true);
-        } else {
-          // Jika keluar, berarti layar sedang menampilkan area terang (About, Skillset, dll)
-          setIsDarkBg(false);
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(
-      observerCallback,
-      observerOptions,
-    );
-
-    // Targetkan section yang berlatar belakang gelap di page Anda
-    const darkSections = ["hero", "contact"];
-    darkSections.forEach((id) => {
-      const element = document.getElementById(id);
-      if (element) observer.observe(element);
-    });
-
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      observer.disconnect();
     };
   }, []);
 
-  // Penentuan kelas utility Tailwind secara dinamis
-  const textColorClass = isDarkBg ? "text-white" : "text-gray-900";
-  const linkHoverClass = isDarkBg
-    ? "hover:text-primary-200"
-    : "hover:text-purple-600";
+  if (!mounted) return null;
+  const isDarkMode = theme === "dark";
 
-  const navbarBgClass = scrolled
-    ? isDarkBg
-      ? "backdrop-blur-3xl bg-neutral-950/40 border-b border-white/5 shadow-2xl"
-      : "backdrop-blur-3xl bg-white/60 border-b border-gray-200/50 shadow-md"
-    : "bg-transparent";
+  const isTextBlack = scrolled && !isDarkMode;
 
   return (
     <header
       className={`
-      fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ease-in-out h-16 md:h-21.5 lg:h-20 flex items-center
-      ${textColorClass} ${navbarBgClass}
+      fixed px-4 top-0 z-50 w-full text-white
+      ${isTextBlack ? "text-black" : "text-white"}
+      ${scrolled ? "backdrop-blur-3xl" : "bg-transparent"}
       `}
     >
-      <div className="custom-container mx-auto flex justify-between items-center  w-full">
-        {/* Image logo - Otomatis berganti aset putih / hitam tergantung background section */}
+      <div className="flex-between custom-container  h-16 md:h-21.5">
+        {/* Image logo */}
         <Image
           src={
-            isDarkBg
+            isTextBlack
               ? "/icons/icon-logo-black.svg"
               : "/icons/icon-logo-white.svg"
           }
           alt="logo"
           priority
-          // fill
           width={120}
-          height={120}
-          className="w-30 h-30 transition-all duration-300"
+          height={40}
+          className="
+          max-w-35.25 max-h-11 h-auto
+          "
         />
 
         {/* nav */}
         <nav className="hidden lg:block">
-          <ul className="flex-start gap-8 font-medium">
+          <ul className="flex-start gap-8">
             {navigationData.map((data) => (
               <li key={data.label}>
                 <Link
-                  className={`transition-colors duration-300 ${linkHoverClass}`}
+                  className={`transition-colors ${isTextBlack ? "text-black hover:text-violet-600" : "text-white hover:text-primary-200"}`}
                   href={data.href}
                 >
                   {data.label}
@@ -112,67 +85,106 @@ const Navbar = () => {
           </ul>
         </nav>
 
-        <m.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
-          {/* button */}
-          <Button
-            asChild
-            variant="default"
-            className="hidden lg:flex px-4 lg:px-12 gap-2 rounded-full h-12 bg-linear-50 from-[#9747FF] to-[#1179FC] hover:shadow-2xl text-white border-0"
-          >
-            <Link href="/contact" className="font-medium">
-              <Image
-                src="/icons/icon-mail-white.svg"
-                alt="mail icon"
-                width={24}
-                height={24}
-                className="w-6 h-6"
-              />
-              Hire Me
-            </Link>
-          </Button>
-        </m.div>
-
-        {/* sheet button (Mobile Menu) */}
-        <Sheet>
-          <SheetTrigger asChild>
-            <Image
-              src="/icons/icon-menu.svg"
-              alt="menu"
-              width={24}
-              height={24}
-              className={`cursor-pointer lg:hidden transition-all duration-300 ${
-                isDarkBg ? "" : "invert brightness-0"
+        <div className="flex items-center gap-4">
+          <m.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setTheme(isDarkMode ? "light" : "dark")}
+              className={`rounded-full h-10 w-10 border ${
+                isTextBlack
+                  ? "border-neutral-200 text-black hover:bg-neutral-100"
+                  : "border-neutral-800 text-white hover:bg-white/10"
               }`}
-              aria-label="Open main navigation"
-            />
-          </SheetTrigger>
-          <SheetContent>
-            <nav className="mt-16" aria-label="Mobile Navigation">
-              <ul className="flex flex-col gap-4">
-                {navigationData.map((data) => (
-                  <li key={data.label}>
-                    <SheetClose asChild>
-                      <Link
-                        className="hover:text-purple-600 p-4 block text-gray-900 font-medium"
-                        href={data.href}
-                      >
-                        {data.label}
-                      </Link>
-                    </SheetClose>
-                  </li>
-                ))}
-              </ul>
-            </nav>
+              aria-label="Toggle-theme"
+            >
+              {isDarkMode ? (
+                <Sun className="h-[1.2rem] w-[1.2rem] text-yellow-400" />
+              ) : (
+                // src={
+                //   theme === "dark"
+                //   ? "/icons/icon-sun.svg"
+                //   : "/icons/icon-moon.svg"
+                // }
+                // alt="theme toggle"
+                // width={24}
+                // height={24}
+                // className="dark:stroke-white"
+                <Moon
+                  className={`h-[1.2rem] w-[1.2rem]${isTextBlack ? "text-neutral-900" : "text-white"} text-yellow-400`}
+                />
+              )}
+            </Button>
+          </m.div>
+
+          <m.div
+            whileHover={{
+              scale: 1.1,
+            }}
+            whileTap={{
+              scale: 0.98,
+            }}
+          >
+            {/* button */}
             <Button
               asChild
-              className="mt-6 w-full rounded-full h-12 bg-linear-50 from-[#9747FF] to-[#1179FC] text-white"
+              variant="default"
+              className="hidden lg:flex px-12 gap-2 rounded-full h-12 bg-linear-50 from-[#9747FF] to-[#1179FC] hover:shadow-2xl"
             >
-              <SheetClose asChild>
-                <Link href="/contact">Hire Me</Link>
-              </SheetClose>
+              <Link href="/contact" className="font-medium">
+                <Image
+                  src="/icons/icon-mail-white.svg"
+                  alt="mail icon"
+                  width={24}
+                  height={24}
+                  className="w-auto h-auto"
+                />
+                Hire Me
+              </Link>
             </Button>
-          </SheetContent>
-        </Sheet>
+          </m.div>
+
+          {/* sheet button */}
+          <Sheet>
+            <SheetTrigger asChild>
+              {/* <Menu
+              className="cursor-pointer lg:hidden"
+              aria-label="Open main navigation"
+              /> */}
+              <Image
+                src="/icons/icon-menu.svg"
+                alt="menu"
+                width={24}
+                height={24}
+                className="cursor-pointer lg:hidden"
+                aria-label="Open main navigation"
+              />
+            </SheetTrigger>
+            <SheetContent>
+              <nav className="mt-16" aria-label="Mobile Navigation">
+                <ul className="flex flex-col gap-4">
+                  {navigationData.map((data) => (
+                    <li key={data.label}>
+                      <SheetClose asChild>
+                        <Link
+                          className="hover:text-primary-200 p-4"
+                          href={data.href}
+                        >
+                          {data.label}
+                        </Link>
+                      </SheetClose>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+              <Button asChild className="mt-3 w-full">
+                <SheetClose asChild>
+                  <Link href="#contact">Me Hire</Link>
+                </SheetClose>
+              </Button>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </header>
   );
