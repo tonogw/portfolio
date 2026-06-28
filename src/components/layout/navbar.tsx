@@ -131,7 +131,7 @@ const Navbar = () => {
             </Button>
           </m.div>
 
-          {/* PERBAIKAN: SHEET NAVIGATION UNTUK TABLET (768px) & MOBILE */}
+          {/* SHEET NAVIGATION UNTUK TABLET & MOBILE */}
           <Sheet>
             <SheetTrigger asChild>
               <Button

@@ -174,7 +174,7 @@ export default function Footer() {
         {/* HIERARCHY DIVIDER LINE */}
         <div className="w-full h-px  mb-8" />
 
-        <div className="relative z-10 custom-container h-[202px] flex flex-col justify-center items-center text-center">
+        <div className="relative z-10 custom-container h-50.5 flex flex-col justify-center items-center text-center">
           {/* BARIS 1: Logo (Otomatis ganti warna mengikuti tema gelap/terang) */}
           <div className="mb-4">
             <Image
@@ -192,7 +192,7 @@ export default function Footer() {
           </div>
 
           {/* BARIS 2: Deskripsi Teks Figma */}
-          <p className="max-w-[620px] text-xs md:text-sm font-medium text-neutral-500 dark:text-neutral-400 leading-relaxed mb-5 px-4">
+          <p className="max-w-155 text-xs md:text-sm font-medium text-neutral-500 dark:text-neutral-400 leading-relaxed mb-5 px-4">
             Front-End Developer with a passion for clean code and intuitive
             design. Turning ideas into functional beauty
           </p>
@@ -200,7 +200,7 @@ export default function Footer() {
           {/* BOTTOM FOOTER: Hak Cipta & Sinkronisasi Blok Sosmed Kustom */}
 
           {/* BLOK IKON SOSMED (SINKRONISASI PRESISI DARI HERO.TSX) */}
-          <div className="items-center flex  gap-4">
+          <div className="items-center flex  gap-4 p-4">
             {sosmedIcon.map((icon) => (
               <Link
                 href={icon.href}
@@ -242,7 +242,10 @@ export default function Footer() {
           </div>
           <div className="flex flex-col sm:flex-row justify-between items-center gap-6">
             <p className="text-xs md:text-sm font-medium text-neutral-500 tracking-wide text-center sm:text-left">
-              &copy; 2026 PTP Astula Beos Reswara. All rights reserved.
+              &copy; 2026 Gunar
+              <strong className="font-bold text-white">to</strong> Wibiso
+              <strong className="font-bold text-white">no</strong>. All rights
+              reserved.
             </p>
           </div>
         </div>
