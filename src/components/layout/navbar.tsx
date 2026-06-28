@@ -22,21 +22,27 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
+    const mountTimer = setTimeout(() => {
+      setMounted(true);
+    }, 0);
+
     const handleScroll = () => {
-      // PERBAIKAN: Begitu scroll > 0, langsung aktifkan efek kabut/blur & deteksi warna
+      // Begitu scroll > 10, aktifkan efek kabut/blur & deteksi warna
       if (window.scrollY > 10) {
         setScrolled(true);
       } else {
         setScrolled(false);
       }
-      setMounted(true);
     };
 
     // Jalankan sekali saat load pertama
     handleScroll();
 
     window.addEventListener("scroll", handleScroll, { passive: true });
+
+    // Pembersihan total saat komponen unmount
     return () => {
+      clearTimeout(mountTimer);
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
@@ -66,6 +72,7 @@ const Navbar = () => {
               : "/icons/icon-logo-white.svg"
           }
           alt="logo"
+          priority
           width={120}
           height={40}
           style={{ width: "auto", height: "auto" }}

@@ -24,29 +24,24 @@ export default function Home() {
   const [isRotating, setIsRotating] = useState(false);
 
   useEffect(() => {
+    // Gunakan fungsi internal yang stabil terisolasi di dalam efek
     const handleScroll = () => {
-      // PERBAIKAN UTAMA: Cari elemen fisik section skillset
       const skillsetSection = document.getElementById("skillset");
 
       if (skillsetSection) {
         const rect = skillsetSection.getBoundingClientRect();
-
-        // Jika bagian atas section skillset sudah naik mendekati atau melewati viewport atas layar
         if (rect.top <= window.innerHeight) {
           setShowGhostButton(true);
         } else {
           setShowGhostButton(false);
         }
       } else {
-        // Fallback cadangan jika ID tidak ditemukan, gunakan piksel aman
         setShowGhostButton(window.scrollY > 400);
       }
 
-      // Deteksi apakah user sudah mentok sampai di paling bawah halaman portofolio
       const totalPageHeight = document.documentElement.scrollHeight;
       const currentScrollPosition = window.scrollY + window.innerHeight;
 
-      // Jika sisa jarak kurang dari 50px, ubah status menjadi di dasar halaman
       if (totalPageHeight - currentScrollPosition < 50) {
         setIsAtBottom(true);
       } else {
@@ -54,11 +49,16 @@ export default function Home() {
       }
     };
 
-    // Jalankan sekali di awal untuk ancang-ancang
+    // Jalankan sekali di awal
     handleScroll();
 
+    // Pasang pendengar tunggal
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    // PERBAIKAN MUTLAK: Pastikan mencabut fungsi handleScroll yang tepat saat unmount/re-render
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const handlePureScroll = () => {

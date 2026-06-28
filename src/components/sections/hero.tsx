@@ -30,7 +30,7 @@ const Hero = () => {
           sizes="1440"
           // width={1440}
           // height={1024}
-          // loading="eager"
+          loading="eager"
           className="
           w-360 h-256
           object-cover object-center z-0"

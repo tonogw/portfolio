@@ -1,15 +1,16 @@
 import { ThemeProvider } from "next-themes";
-import { Poppins, Geist } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
-const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
+// const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "700"],
   //   style: ["normal", "italic"],
   variable: "--font-poppins",
+  preload: false,
 });
 
 // export const metadata: Metadata = {
@@ -29,10 +30,10 @@ export default function RootLayout({
       className={cn(
         "scroll-smooth md:scroll-auto",
         "font-sans",
-        geist.variable,
+        poppins.variable,
       )}
     >
-      <body className={`${poppins.variable} antialiased`}>
+      <body className="poppins.variable antialiased  dark:bg-neutral-900">
         <ThemeProvider attribute="class" defaultTheme="light" enableColorScheme>
           {children}
         </ThemeProvider>
