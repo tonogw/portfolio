@@ -4,15 +4,6 @@ import Image from "next/image";
 import { experienceData } from "@/constant/experience-data";
 import { motion as m, Variants } from "motion/react";
 
-// interface ExperienceItemType {
-//   id: number;
-//   period: string;
-//   icon: any;
-//   coName: string;
-//   role: string;
-//   achievement: string;
-// }
-
 export default function Experience() {
   const listContainerVariants: Variants = {
     hidden: {},
@@ -35,7 +26,7 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="relative max-w-360 mx-auto bg-white py-20 text-black overflow-hidden"
+      className="relative max-w-360 mx-auto bg-white dark:bg-neutral-900 py-20 text-black dark:text-white overflow-hidden"
     >
       {/* HEADER JUDUL */}
       <m.div
@@ -45,10 +36,10 @@ export default function Experience() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="custom-container  text-center flex flex-col items-center gap-3 mb-16"
       >
-        <span className="border border-[#D5D7DA] px-4 py-1.5 rounded-full text-xs font-bold text-gray-500 shadow-sm bg-white">
+        <span className="border border-[#D5D7DA] px-4 py-1.5 rounded-full text-xs font-bold text-gray-500 dark:text-white shadow-sm bg-white dark:bg-neutral-900">
           WORK EXPERIENCE
         </span>
-        <h2 className="text-4xl lg:text-[48px] font-black text-gray-900 tracking-tight mt-1">
+        <h2 className="text-4xl lg:text-[48px] font-black text-gray-900 dark:text-white tracking-tight mt-4">
           Professional Career
         </h2>
       </m.div>
@@ -68,7 +59,7 @@ export default function Experience() {
               variants={itemVariants}
               whileHover={{ y: -2 }}
               /* Kontainer utama kartu mengikuti Screenshot Figma (361px di mobile, lebar penuh di desktop) */
-              className="relative flex flex-col lg:flex-row items-start md:items-stretch border-2 border-purple-200/60 md:border-gray-100 bg-white rounded-3xl p-6 md:p-0 shadow-xs transition-all duration-300 hover:shadow-md w-full max-w-[361px] md:max-w-none mx-auto md:mx-0 pt-16 md:pt-0"
+              className="relative flex flex-col md:flex-row items-start md:items-stretch border-2 border-purple-200/60 md:border-gray-100 bg-white dark:bg-neutral-500 rounded-sl p-6 md:p-0 shadow-xs transition-all duration-300 hover:shadow-md w-full max-w-[361px] md:max-w-none mx-auto md:mx-0 pt-16 md:pt-0"
             >
               {/* === BLOK PERIODE TAHUN DENGAN LENGKUNGAN SVG ASLI FIGMA === */}
               <div className="absolute md:relative top-0 left-0 md:top-auto md:left-auto w-[109px] h-[53px] md:w-[140px] md:h-auto flex items-center justify-start pl-4 md:justify-center md:pl-0 text-white text-xs md:text-base font-bold shrink-0">
@@ -141,8 +132,8 @@ export default function Experience() {
               </div>
 
               {/* === KONTEN TENGAH: ROLE & LOGO (Disesuaikan Pas dengan Gambar Figma) === */}
-              <div className="flex flex-col justify-center p-0 md:p-6 md:border-r border-gray-100 w-full md:w-[260px] shrink-0 text-left gap-3 mt-4 md:mt-0">
-                <h3 className="font-semibold text-lg md:text-xl text-gray-900 tracking-tight leading-tight">
+              <div className="flex flex-col justify-center p-0 md:p-6  w-full md:w-65 shrink-0 text-left gap-3 mt-4 md:mt-0">
+                <h3 className="font-semibold text-lg md:text-xl text-gray-900 dark:text-white tracking-tight leading-tight">
                   {data.role}
                 </h3>
 
@@ -157,14 +148,14 @@ export default function Experience() {
                       className="w-full h-full object-contain"
                     />
                   </div>
-                  <span className="text-base font-bold text-gray-900 tracking-wide">
+                  <span className="text-base font-bold text-gray-900 dark:text-white tracking-wide">
                     {data.coName}
                   </span>
                 </div>
               </div>
 
               {/* === KONTEN KANAN: DESKRIPSI ACHIEVEMENT === */}
-              <div className="flex items-center p-0 md:p-8 text-left text-gray-600 text-sm md:text-base leading-relaxed font-normal w-full mt-4 md:mt-0 bg-white">
+              <div className="flex items-center p-0 md:p-8 text-left text-gray-600 dark:text-white text-sm md:text-base leading-relaxed font-normal w-full mt-4 md:mt-0 bg-white dark:bg-neutral-500">
                 {data.achievement}
               </div>
             </m.li>

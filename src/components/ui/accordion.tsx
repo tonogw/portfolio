@@ -63,7 +63,7 @@ function AccordionTrigger({
           width={24}
           height={24}
           data-slot="accordion-trigger-icon"
-          className="pointer-events-none shrink-0 group-aria-expanded/accordion-trigger:hidden"
+          className="dark:invert pointer-events-none shrink-0 group-aria-expanded/accordion-trigger:hidden"
         />
         <Image
           src={Minus}
@@ -71,7 +71,7 @@ function AccordionTrigger({
           width={24}
           height={24}
           data-slot="accordion-trigger-icon"
-          className="pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline"
+          className="dark:invert pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline"
         />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>

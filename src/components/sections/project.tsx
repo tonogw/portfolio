@@ -59,7 +59,7 @@ export default function Project() {
   return (
     <section
       id="project"
-      className="relative max-w-360 mx-auto bg-white py-20 text-black overflow-hidden"
+      className="relative max-w-360 mx-auto bg-white dark:bg-neutral-900 py-20 text-black dark:text-white overflow-hidden"
     >
       {/* Header Judul Section */}
       <m.div
@@ -69,10 +69,10 @@ export default function Project() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="custom-container text-center flex flex-col items-center gap-3 mb-12"
       >
-        <span className="border border-[#D5D7DA] px-4 py-1.5 rounded-full text-xs font-bold text-gray-500 shadow-sm bg-white">
+        <span className="border border-[#D5D7DA] px-4 py-1.5 rounded-full text-xs font-bold text-gray-500 dark:text-white shadow-sm bg-white dark:bg-neutral-800">
           PORTFOLIO
         </span>
-        <h2 className="text-4xl lg:text-[48px] font-black text-gray-900 tracking-tight mt-1">
+        <h2 className="text-4xl lg:text-[48px] font-black text-gray-900 dark:text-white tracking-tight mt-4">
           Latest Project
         </h2>
       </m.div>
@@ -106,7 +106,6 @@ export default function Project() {
                 src={item.image}
                 alt={item.title}
                 fill
-                priority
                 sizes="(max-w-768px) 361px, 580px"
                 className="object-cover transition-transform duration-500 group-hover:scale-106"
               />
@@ -197,28 +196,28 @@ export default function Project() {
           onClick={handlePrev}
           variant="ghost"
           size="icon"
-          className="w-14 h-14 rounded-full p-0 border border-gray-100 hover:bg-gray-50 shadow-sm bg-white active:scale-95 transition-transform"
+          className="w-14 h-14 rounded-full p-0 border border-gray-100 hover:bg-gray-50 shadow-sm bg-white dark:bg-neutral-800 active:scale-95 transition-transform"
         >
           <Image
             src="/icons/button-prev-left.svg"
             alt="button prev"
             width={56}
             height={56}
-            className="w-full h-full"
+            className="w-full h-full dark:invert"
           />
         </Button>
         <Button
           onClick={handleNext}
           variant="ghost"
           size="icon"
-          className="w-14 h-14 rounded-full p-0 border border-gray-100 hover:bg-gray-50 shadow-sm bg-white active:scale-95 transition-transform"
+          className="w-14 h-14 rounded-full p-0 border border-gray-100 hover:bg-gray-50 shadow-sm bg-white dark:bg-neutral-800 active:scale-95 transition-transform"
         >
           <Image
             src="/icons/button-next-right.svg"
             alt="button next"
             width={56}
             height={56}
-            className="w-full h-full"
+            className="w-full h-full dark:invert"
           />
         </Button>
       </div>

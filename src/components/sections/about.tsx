@@ -6,21 +6,21 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative w-full min-h-162.5 lg:min-h-137 bg-neutral-950"
+      className="relative w-full max-w-360 left-1/2 -translate-x-1/2 min-h-162.5 lg:min-h-137 bg-neutral-950 dark:bg-gray-400"
     >
       {/* Wrapper Utama Latar Belakang (Max 1440px mengikuti aset figma) */}
       <div className="absolute -top-32 lg:-top-16 left-1/2 -translate-x-1/2 z-10 w-full max-w-360">
         {/* === BLOK PUTIH UTAMA (Lebar Penuh 1440px) === */}
-        <div className="absolute top-10 lg:top-25 left-1/2 -translate-x-1/2 w-full bg-white pt-8  lg:py-14  z-50 text-black">
+        <div className="absolute top-6 lg:top-25 left-1/2 -translate-x-1/2 w-full bg-white dark:bg-neutral-900 pt-8  lg:py-14  z-50 text-black dark:text-white">
           {/* === CUSTOM CONTAINER (Membatasi isi 1184px rata kanan-kiri segaris Navbar & Footer) === */}
           <div className="custom-container flex flex-col lg:flex-row items-start justify-between gap-8">
             {/* === Left Blok: Menu List Box Ungu === */}
             <div className="w-full lg:w-89.25 bg-[#F3EBFF] rounded-xl p-6 flex flex-col justify-center shrink-0 shadow-md">
-              <ul className="text-black w-full flex flex-col gap-4">
+              <ul className="text-black dark:text-white w-full flex flex-col gap-4">
                 {aboutItem.map((item) => (
                   <li
                     key={item.project}
-                    className="text-black bg-white rounded-xl font-semibold flex items-center p-4 shadow-sm"
+                    className="text-black bg-white dark:bg-neutral-900 rounded-xl font-semibold flex items-center p-4 shadow-sm"
                   >
                     <div
                       className={`w-12 h-12 lg:w-14 lg:h-14 ${item.bg} rounded-full flex items-center justify-center mr-4 shrink-0`}
@@ -34,10 +34,10 @@ export default function About() {
                       />
                     </div>
                     <div>
-                      <div className="font-bold text-sm text-gray-900">
+                      <div className="font-bold text-sm text-gray-900 dark:text-white">
                         {item.project}
                       </div>
-                      <div className="text-xs text-gray-400 font-normal mt-0.5">
+                      <div className="text-xs text-gray-400 dark:text-white font-normal mt-0.5">
                         {item.qty} project
                       </div>
                     </div>
@@ -48,24 +48,24 @@ export default function About() {
 
             {/* === Right Blok: Konten Teks About === */}
             <div className="w-full lg:max-w-178.75 flex flex-col gap-4 text-left py-10">
-              <span className="w-25.5 text-xs font-bold tracking-wider text-black border border-[#D5D7DA]  bg-[#FFFFFF] px-0 lg:px-3 py-1 rounded-full">
+              <span className="w-25.5 text-xs font-bold tracking-wider text-black  border border-[#D5D7DA]  bg-[#FFFFFF] px-0 lg:px-3 py-1 rounded-full">
                 ABOUT ME
               </span>
 
               {aboutData.map((data) => (
                 <div key={data.title} className="flex flex-col gap-4">
                   {/* Judul Utama */}
-                  <h2 className="text-3xl md:text-4xl lg:text-[44px] font-black text-gray-900 tracking-tight leading-tight">
+                  <h2 className="text-3xl md:text-4xl lg:text-[44px] font-black text-gray-900 dark:text-white tracking-tight leading-tight">
                     {data.title}
                   </h2>
 
                   {/* Paragraf Deskripsi */}
-                  <p className="text-gray-800 text-sm md:text-base leading-relaxed font-normal">
+                  <p className="text-gray-800 dark:text-white text-sm md:text-base leading-relaxed font-normal">
                     {data.paragraph}
                   </p>
 
                   {/* === Blok Informasi Statistik Dinamis === */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4 pt-6 border-t border-gray-100">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4 pt-6">
                     {/* STATISTIK 1: Project Completed + Animasi Dokumen Masuk Binder */}
                     <div className="flex items-center gap-4">
                       {/* Kontainer Animasi Folder & Dokumen */}
@@ -154,10 +154,10 @@ export default function About() {
 
                       {/* Teks Angka Proyek */}
                       <div>
-                        <h3 className="text-3xl font-black text-gray-950 leading-none">
+                        <h3 className="text-3xl font-black text-gray-950 dark:text-white leading-none">
                           {data.projQty}+
                         </h3>
-                        <p className="text-xs font-semibold text-gray-700 mt-1">
+                        <p className="text-xs font-semibold text-gray-700 dark:text-white mt-1">
                           {data.projStatus}
                         </p>
                       </div>
@@ -201,10 +201,9 @@ export default function About() {
                           alt="fifty plus logo"
                           width={91}
                           height={60}
-                          priority
-                          className="h-auto w-auto object-contain"
+                          className="h-auto w-auto object-contain dark:invert"
                         />
-                        <p className="text-xs font-semibold text-gray-700 mt-0.5">
+                        <p className="text-xs font-semibold text-gray-700 mt-0.5 dark:text-white">
                           {data.clientTestimoni}
                         </p>
                       </div>
@@ -222,8 +221,7 @@ export default function About() {
           alt="substract"
           width={1440}
           height={390}
-          priority
-          className="z-10 w-full h-auto object-center"
+          className="z-10 w-full h-auto object-center dark:invert"
         />
       </div>
     </section>

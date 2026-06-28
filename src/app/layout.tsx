@@ -1,11 +1,16 @@
+import { ThemeProvider } from "next-themes";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import { cn } from "@/lib/utils";
+
+// const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "700"],
   //   style: ["normal", "italic"],
   variable: "--font-poppins",
+  preload: false,
 });
 
 // export const metadata: Metadata = {
@@ -19,8 +24,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth md:scroll-auto">
-      <body className={`${poppins.variable} antialiased`}>{children}</body>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={cn(
+        "scroll-smooth md:scroll-auto",
+        "font-sans",
+        poppins.variable,
+      )}
+    >
+      <body className="poppins.variable antialiased  dark:bg-neutral-900">
+        <ThemeProvider attribute="class" defaultTheme="light" enableColorScheme>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
