@@ -15,13 +15,13 @@ export default function Footer() {
       id="footer"
       // PERBAIKAN 1: Gunakan overflow-visible agar elemen -top-80px tidak terpotong (clip) keluar wadah.
       // Singkirkan -top-60 global agar posisi klik form di atasnya aman.
-      className="relative w-full max-w-360 mx-auto pb-12 pt-24 overflow-visible bg-[#0A0D12] text-white flex flex-col justify-between z-10"
+      className="relative max-w-360 mx-auto pb-12 pt-24 overflow-visible bg-[#0A0D12] text-white flex flex-col justify-between z-10"
     >
       {/* ================= STACK BACKGROUND LAYER (FIGMA) ================= */}
       <div className="absolute -top-[140px] inset-x-0 bottom-0 z-0 pointer-events-none select-none overflow-visible">
         {/* 1. PERBAIKAN 2: Set posisi tepat -top-[80px] sesuai overlap form Figma Anda */}
         {/* z-[30] memastikan lengkungan berada di atas backdrop contact maupun backdrop footer */}
-        <div className="absolute top-0 inset-x-0 max-w-360 h-[80px] z-10">
+        <div className="absolute -top-[20px] inset-x-0 max-w-360 h-[80px] z-10">
           <Image
             src="/images/Subtract.png"
             alt="Top Section Curve"
@@ -37,14 +37,16 @@ export default function Footer() {
           <Image
             src="/images/Hero Background.png"
             alt="Footer Vector Gradient"
-            fill
+            width={1440}
+            height={662}
+            // fill
             className="object-cover object-bottom"
             priority
           />
         </div>
 
         {/* 3. Ellipse / Dark Gradient Overlays (Pencahayaan Figma) */}
-        <div className="absolute -left-20 bottom-0 w-125 h-125 z-0 opacity-60 pointer-events-none blur-3xl select-none">
+        <div className="absolute -left-20  w-125 h-125 z-0 opacity-60 pointer-events-none blur-3xl select-none">
           <Image
             src="/images/Ellipse 4.png"
             alt="Glow Left"
@@ -66,7 +68,9 @@ export default function Footer() {
           <Image
             src="/images/Dark Gradient 02.png"
             alt="Dark Blend"
-            fill
+            width={1440}
+            height={662}
+            // fill
             className="object-cover"
           />
         </div>
@@ -91,7 +95,9 @@ export default function Footer() {
           <Image
             src="/images/Line.png"
             alt="Matrix Overlay Lines"
-            fill
+            width={1440}
+            height={662}
+            // fill
             className="object-cover object-bottom"
           />
         </m.div>

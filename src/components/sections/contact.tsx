@@ -74,7 +74,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative max-w-360 mx-auto overflow-hidden bg-white dark:bg-neutral-900 py-10"
+      className="relative max-w-360 mx-auto overflow-hidden bg-white dark:bg-gray-900 py-10"
     >
       {/* Komponen dialog animasi amplop */}
       <ContactDialog
@@ -100,7 +100,7 @@ export default function Contact() {
         alt="pattern"
         width={632}
         height={616}
-        className="absolute inset-0 top-80 "
+        className="absolute right-1/2 inset-0 top-40 "
       />
 
       <Image
@@ -108,7 +108,7 @@ export default function Contact() {
         alt="pattern"
         width={632}
         height={616}
-        className="absolute inset-0 top-80 left-150 "
+        className="absolute  inset-0 top-40 left-1/2 "
       />
 
       <div className="custom-container max-w-360 mx-auto relative z-50">

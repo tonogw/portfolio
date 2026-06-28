@@ -22,7 +22,7 @@ const Hero = () => {
       className="relative max-w-360 mx-auto h-209.5 lg:h-256  overflow-hidden bg-black"
     >
       {/* Background */}
-      <div className="absolute max-w-360 mx-auto  inset-0 z-0">
+      <div className="absolute max-w-360 mx-auto md:px-10 inset-0 z-0">
         <Image
           src="/images/hero-backdrop-gradient.png"
           alt="color gradient"
@@ -239,19 +239,50 @@ const Hero = () => {
               </Link>
             ))}
           </div>
-          <m.div whileHover={{ scale: 1.1 }}>
-            <Button className="gap-2 py-1.5 px-2.75 lg:px-4 h-10 rounded-full bg-[#0A0D1280] ">
-              <a href="#skill" className="hidden lg:inline">
+          {/* TOMBOL SCROLL DOWN HERO (IDENTIK GHOST BUTTON - LOGIKA LOCK 900PX) */}
+          <m.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Button
+              onClick={() => {
+                // Memicu scroll halus tepat sejauh 900px dari posisi paling atas halaman
+                window.scrollTo({
+                  top: 900,
+                  behavior: "smooth",
+                });
+              }}
+              // Membawa style kelas kontras, border, dan hover murni dari Ghost Button Anda
+              className="gap-2 py-2 px-4 h-12 w-full lg:w-auto rounded-full bg-neutral-950 dark:bg-white text-white dark:text-neutral-950 border border-neutral-800 dark:border-neutral-200 hover:bg-neutral-900 dark:hover:bg-neutral-100 shadow-2xl cursor-pointer font-bold"
+            >
+              <span className="text-xs font-semibold tracking-wider uppercase">
                 Scroll Down
-              </a>
+              </span>
 
-              <Image
-                src="/icons/icon-scrolldown-white.svg"
-                alt="arrow down"
-                width={16}
-                height={16}
-                className="w-4 h-4 hover:animate-bounce"
-              />
+              {/* Kontainer Ikon dengan Efek Putar Framer Motion yang Identik */}
+              <m.div
+                style={{ width: "16px", height: "16px" }}
+                className="relative flex items-center justify-center"
+                whileHover={{ rotate: 360 }} // Otomatis berputar lucu 360° saat kursor menyentuh (hover)
+                transition={{ duration: 0.35, ease: "easeInOut" }}
+              >
+                {/* Ikon untuk Light Mode (Tombol Hitam -> Panah White) */}
+                <Image
+                  src="/icons/icon-scrolldown-white.svg"
+                  alt="arrow white"
+                  width={16}
+                  height={16}
+                  style={{ width: "auto", height: "auto" }} // Mengunci aspek rasio Vercel Optimization
+                  className="block dark:hidden animate-bounce"
+                />
+
+                {/* Ikon untuk Dark Mode (Tombol Putih -> Panah Black) */}
+                <Image
+                  src="/icons/icon-scrolldown-black.svg"
+                  alt="arrow black"
+                  width={16}
+                  height={16}
+                  style={{ width: "auto", height: "auto" }} // Mengunci aspek rasio Vercel Optimization
+                  className="hidden dark:block animate-bounce"
+                />
+              </m.div>
             </Button>
           </m.div>
         </div>
