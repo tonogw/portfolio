@@ -6,7 +6,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative w-full min-h-162.5 lg:min-h-137 bg-neutral-950 dark:bg-gray-400"
+      className="relative w-full max-w-360 left-1/2 -translate-x-1/2 min-h-162.5 lg:min-h-137 bg-neutral-950 dark:bg-gray-400"
     >
       {/* Wrapper Utama Latar Belakang (Max 1440px mengikuti aset figma) */}
       <div className="absolute -top-32 lg:-top-16 left-1/2 -translate-x-1/2 z-10 w-full max-w-360">

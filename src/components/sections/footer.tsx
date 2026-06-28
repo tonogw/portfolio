@@ -4,10 +4,10 @@ import { motion as m } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { sosmedIcon } from "@/constant/sosmed-data";
-import { useTheme } from "next-themes";
+// import { useTheme } from "next-themes";
 
 export default function Footer() {
-  const { resolvedTheme } = useTheme();
+  //   const { resolvedTheme } = useTheme();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -48,7 +48,8 @@ export default function Footer() {
           <Image
             src="/images/Ellipse 4.png"
             alt="Glow Left"
-            fill
+            width={807}
+            height={650}
             className="object-contain"
           />
         </div>
@@ -56,7 +57,8 @@ export default function Footer() {
           <Image
             src="/images/Ellipse 5.png"
             alt="Glow Right"
-            fill
+            width={1432}
+            height={604}
             className="object-contain"
           />
         </div>
@@ -101,22 +103,15 @@ export default function Footer() {
 
           <div className="relative z-20 custom-container h-50.5 flex flex-col justify-center items-center text-center">
             {/* BARIS 1: Logo */}
-            <div className="mb-4 mt-100 pointer-events-auto">
+            <div className="mb-4 mt-80 pointer-events-auto">
               <Image
                 src="/icons/icon-logo-white.svg"
                 alt="Your Logo"
-                width={100}
-                height={32}
-                priority
-                className="h-auto w-auto object-contain block dark:hidden"
-              />
-              <Image
-                src="/icons/icon-logo-white.svg"
-                alt="Your Logo"
-                width={100}
-                height={32}
-                priority
-                className="h-auto w-auto object-contain hidden dark:block"
+                width={206}
+                height={48}
+                style={{ width: "206px", height: "48px" }}
+                className="object-contain"
+                priority={false}
               />
             </div>
 

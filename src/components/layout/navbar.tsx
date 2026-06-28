@@ -52,7 +52,7 @@ const Navbar = () => {
   return (
     <header
       className={`
-        fixed px-4 top-0 z-60 w-full transition-all duration-300
+        fixed top-0 z-60 max-w-360 w-full left-1/2 -translate-x-1/2 transition-all duration-300
         ${isTextBlack ? "text-neutral-900" : "text-white"}
         ${scrolled ? "bg-white/70 dark:bg-neutral-900/70 backdrop-blur-md shadow-xs border-b border-neutral-200/20" : "bg-transparent"}
       `}
@@ -69,7 +69,8 @@ const Navbar = () => {
           priority
           width={120}
           height={40}
-          className="max-w-35.25 max-h-11 h-auto"
+          style={{ width: "auto", height: "auto" }}
+          className="max-w-35.25 max-h-11 h-auto object-contain"
         />
 
         {/* 2. NAVIGATION DESKTOP */}
@@ -125,6 +126,8 @@ const Navbar = () => {
                   alt="mail icon"
                   width={20}
                   height={20}
+                  style={{ width: "auto", height: "auto" }}
+                  className="max-w-6 max-h-6 h-auto object-contain"
                 />
                 Hire Me
               </Link>

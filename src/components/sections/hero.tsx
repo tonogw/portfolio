@@ -22,7 +22,7 @@ const Hero = () => {
       className="relative max-w-360 mx-auto h-209.5 lg:h-256  overflow-hidden bg-black"
     >
       {/* Background */}
-      <div className="absolute max-w-360 mx-auto md:px-10 inset-0 z-0">
+      <div className="absolute max-w-360 mx-auto  inset-0 z-0">
         <Image
           src="/images/hero-backdrop-gradient.png"
           alt="color gradient"
