@@ -16,6 +16,7 @@ import QnA from "@/components/sections/qna";
 import Contact from "@/components/sections/contact";
 // import SubmitAnimation from "@/components/animation/SubmitAnimation";
 import { Button } from "@/components/ui/button";
+import Footer from "@/components/sections/footer";
 
 export default function Home() {
   const [showGhostButton, setShowGhostButton] = useState(false);
@@ -86,6 +87,7 @@ export default function Home() {
       <Testimonial />
       <QnA />
       <Contact />
+      <Footer />
       {/* <SubmitAnimation /> */}
 
       {/* GHOST TRIGGER AREA (FIXED POSITION) */}

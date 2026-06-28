@@ -82,7 +82,14 @@ function DialogContent({
                 whileTap={{ scale: 0.98 }}
               >
                 <Button
-                  onClick={onClose}
+                  // onClick={onClose}
+                  onClick={() => {
+                    window.scrollTo({
+                      top: 0,
+                      behavior: "smooth",
+                    });
+                    if (onClose) onClose();
+                  }}
                   className="h-14 w-full rounded-full bg-[#7C5CFF] hover:bg-[#6944FF] text-base font-semibold text-white transition-all shadow-[0_4px_16px_rgba(124,92,255,0.3)]"
                 >
                   Back to Home
