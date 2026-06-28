@@ -21,6 +21,7 @@ import Footer from "@/components/sections/footer";
 export default function Home() {
   const [showGhostButton, setShowGhostButton] = useState(false);
   const [isAtBottom, setIsAtBottom] = useState(false);
+  const [isRotating, setIsRotating] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -75,6 +76,19 @@ export default function Home() {
     }
   };
 
+  // FIX SINKRONISASI: Fungsi pemicu animasi interaktif sebelum menjalankan scroll asli
+  const handleAnimatedScroll = () => {
+    if (isRotating) return; // Cegah double-click saat roda animasi berputar
+
+    setIsRotating(true);
+
+    // Beri jeda 350ms agar putaran 360 derajatnya selesai dinikmati mata user
+    setTimeout(() => {
+      handlePureScroll();
+      setIsRotating(false);
+    }, 350);
+  };
+
   return (
     <div className="relative">
       <Hero />
@@ -90,7 +104,6 @@ export default function Home() {
       <Footer />
       {/* <SubmitAnimation /> */}
 
-      {/* GHOST TRIGGER AREA (FIXED POSITION) */}
       {/* GHOST TRIGGER AREA (FIXED POSITION - FIXED Z-INDEX & KONTRAS THEME) */}
       <AnimatePresence>
         {showGhostButton && (
@@ -108,26 +121,48 @@ export default function Home() {
               whileTap={{ scale: 0.95 }}
             >
               <Button
-                onClick={handlePureScroll}
-                // PERBAIKAN: Memastikan text-white dan background solid agar tidak tembus pandang di background gelap/terang
+                onClick={handleAnimatedScroll} // Menggunakan fungsi pemicu animasi baru
                 className="gap-2 py-2 px-4 h-12 w-full rounded-full bg-neutral-950 dark:bg-white text-white dark:text-neutral-950 border border-neutral-800 dark:border-neutral-200 hover:bg-neutral-900 dark:hover:bg-neutral-100 shadow-2xl cursor-pointer font-bold"
               >
                 <span className="text-xs font-semibold tracking-wider uppercase">
                   {isAtBottom ? "Back To Top" : "Scroll Down"}
                 </span>
-                <Image
-                  src={
-                    isAtBottom
-                      ? "/icons/icon-scrolldown-white.svg"
-                      : "/icons/icon-scrolldown-black.svg"
-                  }
-                  alt="arrow navigation"
-                  width={16}
-                  height={16}
-                  className={`w-4 h-4 transition-transform duration-500 inversion dark:invert ${
-                    isAtBottom ? "rotate-180" : "animate-bounce"
-                  }`}
-                />
+
+                {/* Kontainer Ikon Terintegrasi dengan Framer Motion */}
+                <m.div
+                  style={{ width: "16px", height: "16px" }}
+                  className="relative flex items-center justify-center"
+                  // Jika sedang diklik (isRotating), putar penuh ke 360.
+                  // Jika diam, posisi mengikuti status posisi: bawah (180 derajat) atau atas (0 derajat)
+                  animate={{
+                    rotate: isRotating ? 360 : isAtBottom ? 180 : 0,
+                  }}
+                  transition={{
+                    duration: 0.35,
+                    ease: "easeInOut",
+                  }}
+                >
+                  {/* Ikon untuk Light Mode (Tombol Hitam -> Panah White) */}
+                  <Image
+                    src="/icons/icon-scrolldown-white.svg"
+                    alt="arrow white"
+                    width={16}
+                    height={16}
+                    style={{ width: "auto", height: "auto" }}
+                    // Efek bounce otomatis mati saat tombol sedang berputar (isRotating)
+                    className={`block dark:hidden ${!isAtBottom && !isRotating ? "animate-bounce" : ""}`}
+                  />
+
+                  {/* Ikon untuk Dark Mode (Tombol Putih -> Panah Black) */}
+                  <Image
+                    src="/icons/icon-scrolldown-black.svg"
+                    alt="arrow black"
+                    width={16}
+                    height={16}
+                    style={{ width: "auto", height: "auto" }}
+                    className={`hidden dark:block ${!isAtBottom && !isRotating ? "animate-bounce" : ""}`}
+                  />
+                </m.div>
               </Button>
             </m.div>
           </m.div>
