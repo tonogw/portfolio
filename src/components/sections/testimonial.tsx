@@ -110,7 +110,7 @@ export default function Testimonial() {
     >
       {/* Header Judul */}
       <div className="custom-container text-center flex flex-col items-center gap-3 mb-16">
-        <span className="border border-[#D5D7DA] px-4 py-1.5 rounded-full text-xs font-bold text-gray-500 dark:text-white shadow-sm bg-white dark:bg-neutral-800">
+        <span className="border border-[#D5D7DA] dark:border-gray-500 px-4 py-1.5 rounded-full text-xs font-bold text-gray-500 dark:text-white shadow-sm bg-white dark:bg-neutral-800">
           TESTIMONIALS
         </span>
         <h2 className="text-4xl lg:text-[48px] font-black text-gray-900 dark:text-white tracking-tight mt-4">
@@ -144,7 +144,7 @@ export default function Testimonial() {
                   className={`relative flex flex-col gap-6 p-8 rounded-3xl border transition-all duration-500 text-left h-full cursor-pointer ${
                     isActive
                       ? "bg-linear-to-r from-[#9747FF] to-[#1179FC] border-transparent text-white shadow-2xl scale-[1.01] z-20"
-                      : "bg-white dark:bg-neutral-800 border-gray-100 dark:border-gray-500 text-gray-900 dark:text-white shadow-sm z-10"
+                      : "bg-white dark:bg-neutral-500 border-gray-100 dark:border-gray-500 text-gray-900 dark:text-white shadow-sm z-10"
                   }`}
                 >
                   {/* 1. Logo Perusahaan */}
@@ -160,7 +160,12 @@ export default function Testimonial() {
                       isActive ? "text-white/40" : "text-gray-200"
                     }`}
                   >
-                    ”
+                    <Image
+                      src="/icons/icon-testi-quote-white.svg"
+                      alt="quote"
+                      width={48}
+                      height={48}
+                    />
                   </span>
 
                   {/* 3. Isi Pesan Klien */}
@@ -175,7 +180,7 @@ export default function Testimonial() {
                   </p>
 
                   {/* 4. Profil Klien */}
-                  <div className="flex items-center gap-4 mt-4 pt-6 border-t border-gray-100/20">
+                  <div className="flex items-center gap-4 mt-4 pt-6">
                     <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white dark:border-gray-500 shadow-sm shrink-0">
                       <Image
                         src={data.avatar}

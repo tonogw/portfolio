@@ -128,7 +128,7 @@ export default function Skillset() {
                       stroke="#F2F4F7"
                       strokeWidth="14"
                       fill="none"
-                      className="group-hover:stroke-white/20 transition-colors duration-300"
+                      className="group-hover:stroke-white/20 dark:stroke-gray-200/20 transition-colors duration-300"
                     />
 
                     {/* Lingkaran Progress Batang - STROKE 14 */}
@@ -162,7 +162,7 @@ export default function Skillset() {
                   </svg>
 
                   {/* Teks Persentase di Tengah Lingkaran */}
-                  <span className="absolute inset-0 flex items-center justify-center text-xl lg:text-2xl font-black text-gray-900 group-hover:text-white transition-colors duration-300">
+                  <span className="absolute inset-0 flex items-center justify-center text-xl lg:text-2xl font-black text-gray-900 dark:text-white group-hover:text-white transition-colors duration-300">
                     {display}%
                   </span>
                 </div>
@@ -186,12 +186,12 @@ export default function Skillset() {
                       />
                     </m.div>
                     {/* Judul Teknologi */}
-                    <h3 className="font-extrabold text-lg text-gray-900 group-hover:text-white transition-colors duration-300">
+                    <h3 className="font-extrabold text-lg text-gray-900 dark:text-white group-hover:text-white transition-colors duration-300">
                       {data.title}
                     </h3>
                   </div>
                   {/* Narasi/Deskripsi */}
-                  <p className="text-gray-600 text-sm md:text-base leading-relaxed group-hover:text-white/90 transition-colors duration-300">
+                  <p className="text-gray-600 dark:text-neutral-300 text-sm md:text-base leading-relaxed group-hover:text-white/90 transition-colors duration-300">
                     {data.desc}
                   </p>
                 </div>
