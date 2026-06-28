@@ -74,7 +74,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative max-w-360 mx-auto overflow-hidden bg-white dark:bg-neutral-900 py-28"
+      className="relative max-w-360 mx-auto overflow-hidden bg-white dark:bg-neutral-900 py-10"
     >
       {/* Komponen dialog animasi amplop */}
       <ContactDialog
@@ -111,7 +111,7 @@ export default function Contact() {
         className="absolute inset-0 top-80 left-150 "
       />
 
-      <div className="custom-container max-w-360 mx-auto relative z-10">
+      <div className="custom-container max-w-360 mx-auto relative z-50">
         {/* HEADER SECTION */}
         <m.div
           initial={{ opacity: 0, y: 20 }}
@@ -153,7 +153,7 @@ export default function Contact() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="
-            mx-auto max-w-170
+            mx-auto max-w-150
             rounded-[32px]
             border border-neutral-100 dark:border-neutral-500
             bg-white dark:bg-neutral-800 p-8
@@ -161,9 +161,9 @@ export default function Contact() {
             md:p-12
           "
         >
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 z-50">
             {/* ================= Field: Name ================= */}
-            <div className="space-y-2">
+            <div className="space-y-2 z-50">
               <label
                 htmlFor="name"
                 className="text-sm font-semibold text-neutral-800 dark:text-neutral-200"
@@ -193,7 +193,7 @@ export default function Contact() {
             </div>
 
             {/* ================= Field: Email ================= */}
-            <div className="space-y-2">
+            <div className="space-y-2 z-50">
               <label
                 htmlFor="email"
                 className="text-sm font-semibold text-neutral-800 dark:text-neutral-200"
@@ -224,7 +224,7 @@ export default function Contact() {
             </div>
 
             {/* ================= Field: Message ================= */}
-            <div className="space-y-2">
+            <div className="space-y-2 z-50">
               <label
                 htmlFor="message"
                 className="text-sm font-semibold text-neutral-800"
@@ -274,9 +274,10 @@ export default function Contact() {
                   hover:opacity-95
                   disabled:pointer-events-none
                   disabled:opacity-70
+                  Z-50
                 "
               >
-                <Send className="mr-2 h-4 w-4" />
+                <Send className="mr-2 h-4 w-4 z-50" />
                 Submit
               </Button>
             </m.div>

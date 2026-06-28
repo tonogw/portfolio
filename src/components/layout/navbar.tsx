@@ -52,7 +52,7 @@ const Navbar = () => {
   return (
     <header
       className={`
-        fixed px-4 top-0 z-50 w-full transition-all duration-300
+        fixed px-4 top-0 z-60 w-full transition-all duration-300
         ${isTextBlack ? "text-neutral-900" : "text-white"}
         ${scrolled ? "bg-white/70 dark:bg-neutral-900/70 backdrop-blur-md shadow-xs border-b border-neutral-200/20" : "bg-transparent"}
       `}
