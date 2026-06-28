@@ -48,7 +48,7 @@ export default function Skillset() {
   return (
     <section
       id="skill"
-      className="max-w-360 min-h-237 mx-auto pt-20 pb-20 bg-white"
+      className="max-w-360 min-h-237 mx-auto pt-30 pb-20 bg-white dark:bg-neutral-900"
     >
       <div className="custom-container">
         {/* Header Judul Section */}
@@ -59,10 +59,10 @@ export default function Skillset() {
           transition={{ duration: 0.6 }}
           className="flex flex-col items-center gap-4 text-center mb-14"
         >
-          <span className="bg-white py-1 px-4 border border-gray-300 rounded-full text-xs font-bold text-gray-700 shadow-xs">
+          <span className="bg-white dark:bg-neutral-700 py-1 px-4 border border-gray-300 rounded-full text-xs font-bold text-gray-700 dark:text-white shadow-xs">
             SKILL
           </span>
-          <h2 className="font-black text-4xl lg:text-[48px] text-gray-900 tracking-tight">
+          <h2 className="font-black dark:text-white text-4xl lg:text-[48px] text-gray-900 tracking-tight">
             Skillset
           </h2>
         </m.div>
@@ -82,7 +82,7 @@ export default function Skillset() {
               transition={{ duration: 0.4 }}
               className="
                 group relative border border-[#D5D7DA] hover:border-l-[6px] hover:border-l-[#9747FF] 
-                bg-white rounded-2xl p-6 transition-all duration-300 shadow-xs cursor-pointer
+                bg-white dark:bg-neutral-500 rounded-2xl p-6 transition-all duration-300 shadow-xs cursor-pointer
                 hover:border-[#9747FF] hover:bg-linear-to-r hover:from-[#9747FF] hover:to-[#1179FC]
                 hover:shadow-[0_10px_30px_-5px_rgba(151,71,255,0.3)] hover:scale-[1.01] hover:-translate-y-1
               "
@@ -205,27 +205,27 @@ export default function Skillset() {
           <Button
             variant="ghost"
             size="icon"
-            className="w-14 h-14 rounded-full p-0 border border-gray-100 hover:bg-gray-50 shadow-sm bg-white active:scale-95 transition-transform"
+            className="w-14 h-14 rounded-full p-0 border border-gray-100 dark:bg-neutral-500 hover:bg-gray-50 shadow-sm bg-white active:scale-95 transition-transform"
           >
             <Image
               src="/icons/button-prev-left.svg"
               alt="button prev"
               width={56}
               height={56}
-              className="w-full h-full"
+              className="w-full h-full dark:invert"
             />
           </Button>
           <Button
             variant="ghost"
             size="icon"
-            className="w-14 h-14 rounded-full p-0 border border-gray-100 hover:bg-gray-50 shadow-sm bg-white active:scale-95 transition-transform"
+            className="w-14 h-14 rounded-full p-0 border border-gray-100 dark:bg-neutral-500 hover:bg-gray-50 shadow-sm bg-white active:scale-95 transition-transform"
           >
             <Image
               src="/icons/button-next-right.svg"
               alt="button next"
               width={56}
               height={56}
-              className="w-full h-full"
+              className="w-full h-full dark:invert"
             />
           </Button>
         </div>

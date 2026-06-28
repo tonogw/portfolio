@@ -90,7 +90,7 @@ export default function StandOut() {
   return (
     <section
       id="standout"
-      className="mx-auto max-w-360 bg-linear-to-t from-[#F3EBFF] to-neutral-25 py-20 text-black overflow-hidden"
+      className="mx-auto max-w-360 bg-linear-to-t from-[#F3EBFF] to-neutral-25 dark:to-neutral-500 py-20 text-black dark:text-white overflow-hidden"
     >
       {/* Container pembatas aplikasi */}
       <div className="custom-container flex flex-col gap-12">
@@ -105,10 +105,10 @@ export default function StandOut() {
           //   transition={{ duration: 0.6, delay: 1.6 }}
           className="flex flex-col gap-2 justify-center text-center items-center"
         >
-          <span className="px-4 py-1.5 bg-[#F9F5FF] border border-purple-100 rounded-full text-xs lg:text-sm font-regular w-fit text-black shadow-sm">
+          <span className="px-4 py-1.5 bg-[#F9F5FF]  border border-purple-100 rounded-full text-xs lg:text-sm font-regular w-fit text-black shadow-sm">
             COMPARISON
           </span>
-          <h2 className="text-[32px] md:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight">
+          <h2 className="text-[32px] md:text-4xl lg:text-5xl font-black text-gray-900 dark:text-white tracking-tight mt-4">
             Why I Stand Out
           </h2>
         </m.div>
