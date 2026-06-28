@@ -178,11 +178,7 @@ export default function Footer() {
           {/* BARIS 1: Logo (Otomatis ganti warna mengikuti tema gelap/terang) */}
           <div className="mb-4">
             <Image
-              src={
-                isDarkMode
-                  ? "/icons/icon-logo-black.svg"
-                  : "/icons/icon-logo-white.svg"
-              }
+              src="/icons/icon-logo-white.svg"
               alt="Your Logo"
               width={100}
               height={32}

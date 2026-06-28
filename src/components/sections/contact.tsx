@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import type { AnimationState } from "@/components/animation/envelope/types";
+import Image from "next/image";
 
 // Definisikan schema validasi menggunakan Zod
 const contactSchema = z.object({
@@ -73,7 +74,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative max-w-360 mx-auto overflow-hidden bg-white py-28"
+      className="relative max-w-360 mx-auto overflow-hidden bg-white dark:bg-neutral-900 py-28"
     >
       {/* Komponen dialog animasi amplop */}
       <ContactDialog
@@ -86,12 +87,28 @@ export default function Contact() {
       />
 
       {/* Background Dots Pattern */}
-      <div
+      {/* <div
         className="absolute inset-0 opacity-40"
         style={{
           backgroundImage: "radial-gradient(#D1D5DB 1.4px,transparent 1.4px)",
           backgroundSize: "24px 24px",
         }}
+      /> */}
+
+      <Image
+        src="/images/Pattern.png"
+        alt="pattern"
+        width={632}
+        height={616}
+        className="absolute inset-0 top-80 "
+      />
+
+      <Image
+        src="/images/Pattern.png"
+        alt="pattern"
+        width={632}
+        height={616}
+        className="absolute inset-0 top-80 left-150 "
       />
 
       <div className="custom-container max-w-360 mx-auto relative z-10">
@@ -107,11 +124,11 @@ export default function Contact() {
             className="
             rounded-full
             border border-neutral-200
-            bg-white px-5 py-2
+            bg-white dark:bg-neutral-800 px-5 py-2
             text-xs
             font-semibold
             tracking-[0.2em]
-            text-neutral-500
+            text-neutral-500 dark:text-white
             "
           >
             CONTACT
@@ -122,7 +139,7 @@ export default function Contact() {
             text-4xl font-black
             tracking-tight
             md:text-5xl
-            text-black
+            text-black dark:text-white
             "
           >
             Get in Touch
@@ -138,8 +155,8 @@ export default function Contact() {
           className="
             mx-auto max-w-170
             rounded-[32px]
-            border border-neutral-100
-            bg-white p-8
+            border border-neutral-100 dark:border-neutral-500
+            bg-white dark:bg-neutral-800 p-8
             shadow-[0_28px_60px_rgba(0,0,0,.08)]
             md:p-12
           "
@@ -149,7 +166,7 @@ export default function Contact() {
             <div className="space-y-2">
               <label
                 htmlFor="name"
-                className="text-sm font-semibold text-neutral-800"
+                className="text-sm font-semibold text-neutral-800 dark:text-neutral-200"
               >
                 Name
               </label>
@@ -159,12 +176,12 @@ export default function Contact() {
                 autoComplete="name"
                 {...register("name")}
                 className={`
-                  h-13 rounded-xl bg-neutral-50 text-black
+                  h-13 rounded-xl bg-neutral-50 dark:bg-neutral-800  text-black dark:text-white
                   transition-all
                   ${
                     errors.name
                       ? "border-red-500 focus-visible:ring-red-500"
-                      : "border-neutral-200 focus-visible:border-violet-500"
+                      : "border-neutral-200 dark:border-neutral-500  focus-visible:border-violet-500"
                   }
                 `}
               />
@@ -179,7 +196,7 @@ export default function Contact() {
             <div className="space-y-2">
               <label
                 htmlFor="email"
-                className="text-sm font-semibold text-neutral-800"
+                className="text-sm font-semibold text-neutral-800 dark:text-neutral-200"
               >
                 Email
               </label>
@@ -190,12 +207,12 @@ export default function Contact() {
                 placeholder="your@email.com"
                 {...register("email")}
                 className={`
-                  h-13 rounded-xl bg-neutral-50 text-black
+                  h-13 rounded-xl bg-neutral-50 text-black dark:text-white
                   transition-all
                   ${
                     errors.email
                       ? "border-red-500 focus-visible:ring-red-500"
-                      : "border-neutral-200 focus-visible:border-violet-500"
+                      : "border-neutral-200 dark:border-neutral-500 focus-visible:border-violet-500"
                   }
                 `}
               />
@@ -220,12 +237,12 @@ export default function Contact() {
                 placeholder="Tell me about your project..."
                 {...register("message")}
                 className={`
-                  resize-none rounded-2xl bg-neutral-50 text-black
+                  resize-none rounded-2xl bg-neutral-50 text-black dark:text-white
                   transition-all
                   ${
                     errors.message
                       ? "border-red-500 focus-visible:ring-red-500"
-                      : "border-neutral-200 focus-visible:border-violet-500"
+                      : "border-neutral-200 dark:border-neutral-500 focus-visible:border-violet-500"
                   }
                 `}
               />
