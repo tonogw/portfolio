@@ -4,15 +4,6 @@ import Image from "next/image";
 import { experienceData } from "@/constant/experience-data";
 import { motion as m, Variants } from "motion/react";
 
-// interface ExperienceItemType {
-//   id: number;
-//   period: string;
-//   icon: any;
-//   coName: string;
-//   role: string;
-//   achievement: string;
-// }
-
 export default function Experience() {
   const listContainerVariants: Variants = {
     hidden: {},

@@ -106,7 +106,6 @@ export default function Project() {
                 src={item.image}
                 alt={item.title}
                 fill
-                priority
                 sizes="(max-w-768px) 361px, 580px"
                 className="object-cover transition-transform duration-500 group-hover:scale-106"
               />

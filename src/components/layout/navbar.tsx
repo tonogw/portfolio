@@ -66,7 +66,6 @@ const Navbar = () => {
               : "/icons/icon-logo-white.svg"
           }
           alt="logo"
-          priority
           width={120}
           height={40}
           style={{ width: "auto", height: "auto" }}

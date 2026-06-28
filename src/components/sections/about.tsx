@@ -201,7 +201,6 @@ export default function About() {
                           alt="fifty plus logo"
                           width={91}
                           height={60}
-                          priority
                           className="h-auto w-auto object-contain dark:invert"
                         />
                         <p className="text-xs font-semibold text-gray-700 mt-0.5 dark:text-white">
@@ -222,7 +221,6 @@ export default function About() {
           alt="substract"
           width={1440}
           height={390}
-          priority
           className="z-10 w-full h-auto object-center dark:invert"
         />
       </div>

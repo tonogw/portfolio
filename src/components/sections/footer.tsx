@@ -28,7 +28,6 @@ export default function Footer() {
             width={1440}
             height={210}
             className="object-cover object-bottom"
-            priority
           />
         </div>
 
@@ -41,7 +40,6 @@ export default function Footer() {
             height={662}
             // fill
             className="object-cover object-bottom"
-            priority
           />
         </div>
 
@@ -117,7 +115,6 @@ export default function Footer() {
                 height={48}
                 style={{ width: "206px", height: "48px" }}
                 className="object-contain"
-                priority={false}
               />
             </div>
 
@@ -153,7 +150,6 @@ export default function Footer() {
                       alt={icon.alt}
                       width={icon.width}
                       height={icon.height}
-                      priority
                       className="absolute inset-0 m-auto transition-opacity duration-300 opacity-100 group-hover:opacity-0 w-5 h-5 lg:w-6 lg:h-6"
                     />
                     <Image
@@ -161,7 +157,6 @@ export default function Footer() {
                       alt={icon.alt}
                       width={icon.width}
                       height={icon.height}
-                      priority
                       className="transition-all duration-300 opacity-0 group-hover:opacity-100 w-5 h-5 lg:w-6 lg:h-6"
                     />
                   </m.div>

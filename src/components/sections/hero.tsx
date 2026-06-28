@@ -27,7 +27,6 @@ const Hero = () => {
           src="/images/hero-backdrop-gradient.png"
           alt="color gradient"
           fill
-          priority
           sizes="1440"
           // width={1440}
           // height={1024}
@@ -65,7 +64,7 @@ const Hero = () => {
           fill
           // width={1440}
           // height={826}
-          priority
+
           // className="object-contain object-bottom bottom-0 z-10"
           className="
             absolute top-100 lg:top-39.75
@@ -112,7 +111,6 @@ const Hero = () => {
               alt="potrait of man"
               width={754}
               height={681}
-              priority
               className="
          
             w-150 lg:w-188.5 h-auto 
@@ -205,7 +203,6 @@ const Hero = () => {
                     // fill
                     width={icon.width}
                     height={icon.height}
-                    priority
                     className={`
                        ${icon.hoverBg}
                       absolute  
@@ -222,7 +219,6 @@ const Hero = () => {
                     alt={icon.alt}
                     width={icon.width}
                     height={icon.height}
-                    priority
                     className={`
                       transition-all
                       
